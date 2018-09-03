@@ -1,0 +1,50 @@
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请输入要帮助的内容" style="height: 4.3em" />
+        <view class="weui-textarea-counter">0/200</view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">收件人</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="请输入收件人信息" />
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input weui-cell_vcode">
+    <view class="weui-cell__hd">
+      <view class="weui-label">手机号</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="请输入手机号" />
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input weui-cell_vcode">
+    <view class="weui-cell__hd">
+      <view class="weui-label">佣金</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="请输入金额" />
+    </view>
+    <view class="weui-cell__ft">
+      <view class="weui-vcode-btn">元</view>
+    </view>
+  </view>
+
+  <view class="weui-cell weui-cell_input weui-cell_vcode">
+    <view class="weui-cell__hd">
+      <view class="weui-label">服务时间</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker class="weui-btn" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+         <view class='weui-input picker-input'>请选择</view>
+      </picker>
+    </view>
+  </view>
+
+</view>
+<button class="weui-btn type4-btn" type="primary">提交</button>

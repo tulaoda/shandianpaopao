@@ -1,0 +1,5 @@
+/* pages/type3/index.wxss */
+.weui-btn{
+  margin-top: 100rpx;
+  width: 70%;
+}

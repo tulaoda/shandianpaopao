@@ -1,0 +1,39 @@
+/**app.wxss**/
+@import 'style/weui.wxss';
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+button[type=default] {
+  color: #000;
+  background-color: #fff;
+  border: none !important;
+}
+
+.weui-navbar__slider {
+  width: 3em;
+  /* background-color: #000; */
+  margin: 0 2.5em;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+  /* color: #000000; */
+}
+
+.weui-form-preview:not(:first-child) {
+  margin: 20rpx 0;
+}
+
+.weui-tab__content {
+  background-color: #f3f3f3;
+}
+
+.picker-input {
+  text-align: center;
+}

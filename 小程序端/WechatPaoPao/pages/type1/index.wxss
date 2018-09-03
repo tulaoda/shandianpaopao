@@ -1,0 +1,7 @@
+/* pages/type1/index.wxss */
+
+
+.type1-btn{
+  margin-top: 100rpx;
+  width: 70%;
+}

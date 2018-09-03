@@ -1,0 +1,9 @@
+/* pages/type2/index.wxss */
+.weui-btn{
+  margin-top: 50rpx;
+  width: 70%;
+}
+.receiver{
+  margin-top: 100rpx;
+  
+}

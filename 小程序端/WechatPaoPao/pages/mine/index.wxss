@@ -1,0 +1,41 @@
+/**index.wxss**/
+
+.page {
+  background-color: #fafafa;
+  height: 100%;
+  padding-bottom: 100rpx;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 100rpx;
+  background-color: #fff;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+navigator {
+  height: auto;
+  width: auto;
+  display: block;
+  line-height: 80rpx;
+}
+
+.weui-cells_after-title {
+  margin-top: 0.8em !important;
+}

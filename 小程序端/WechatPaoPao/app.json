@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/message/index",
+    "pages/mine/index",
+    "pages/type1/index",
+    "pages/type2/index",
+    "pages/type3/index",
+    "pages/type4/index",
+    "pages/order1/index",
+    "pages/order2/index",
+    "pages/order3/index",
+    "pages/order4/index",
+    "pages/userinfo/index",
+    "pages/suggest/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "闪电跑跑",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "#000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home_off.png",
+        "selectedIconPath": "images/home_on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/message/index",
+        "iconPath": "images/message_off.png",
+        "selectedIconPath": "images/message_on.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "images/mine_off.png",
+        "selectedIconPath": "images/mine_on.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

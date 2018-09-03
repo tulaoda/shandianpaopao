@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="page__hd">
+    <view class="page__title">
+      <image src='../../images/logo.png' />
+    </view>
+    <view class="page__desc">闪电跑跑</view>
+    <view class="weui-article__title">v1.0.0</view>
+
+  </view>
+  <view class="page__bd">
+    <view class="weui-article">
+      <view class="weui-article__h1">服务条款</view>
+      <view class="weui-article__section">
+        <view class="weui-article__section">
+          <view class="weui-article__p">
+          如果您对我们的服务有任何意见或者建议，请向客服人员说明。
+          对于您的投诉或建议，我们会积极处理，给您一个满意的答复。
+          
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer__links">
+      <navigator url="https://mp.weixin.qq.com/s?__biz=MjM5OTA1MDUyMA==&mid=2655442274&idx=1&sn=7dcdd1016d36760e0b84f7e8403a928f&chksm=bd7319158a04900397c4c4541795c3fe13a8d3b6bcadcf73f778790a4fab628657f9972a5d4b&scene=0#rd" class="weui-footer__link">星昊科技</navigator>
+    </view>
+    <view class="weui-footer__text">Copyright © 2018-2018 xinghao.com</view>
+  </view>
+</view>

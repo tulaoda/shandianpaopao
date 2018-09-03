@@ -1,0 +1,37 @@
+/* pages/userinfo/index.wxss */
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 100rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.type1-btn {
+  margin-top: 100rpx;
+  width: 70%;
+}
+
+.weui-cell__bd{
+  flex: 2;
+}
+
+.first_bd {
+  width: 100rpx!important;
+  flex: 1;
+}

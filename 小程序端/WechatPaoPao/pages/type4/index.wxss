@@ -1,0 +1,6 @@
+/* pages/type4/index.wxss */
+
+.type4-btn {
+  margin-top: 100rpx;
+  width: 70%;
+}

@@ -1,0 +1,43 @@
+.weui-flex__item {
+  border-radius: 20rpx;
+  margin: 30rpx 15rpx 0 15rpx;
+  text-align: center;
+  background-color: #fff;
+  line-height: 200rpx;
+  color: #000;
+  border: 1px solid #f3f3f3;
+  box-shadow: 5rpx 5rpx 3rpx #888;
+}
+
+.swiper-container image {
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-container {
+  box-shadow: 0px 5rpx 10px #888;
+  height: 450rpx;
+  margin-bottom: 20rpx;
+}
+
+.container {
+  text-align: center;
+}
+
+.footer {
+  margin-top: 30rpx;
+  height: 210rpx;
+}
+
+.content {
+  background-color: #f3f3f3;
+}
+
+.weui-grid {
+  border-left:1rpx solid #D9D9D9;
+
+  width: 50%;
+}
+.weui-grids{
+  border-radius: 30rpx;
+}

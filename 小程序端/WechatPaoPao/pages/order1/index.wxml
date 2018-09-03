@@ -1,0 +1,109 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <scroll-view scroll-y="true" style="height: 1080rpx;" bindscrolltolower="exhibition_lower">
+            <view class="weui-form-preview">
+              <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__label">价格：</view>
+                <view class="weui-form-preview__value_in-hd">￥3.00</view>
+              </view>
+              <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">送货地址：</view>
+                  <view class="weui-form-preview__value">软件园4号楼908</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">快递公司：</view>
+                  <view class="weui-form-preview__value">中通快递</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">下单时间：</view>
+                  <view class="weui-form-preview__value">2018-08-08 10:23:32</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">订单编号：</view>
+                  <view class="weui-form-preview__value">20180808102332</view>
+                </view>
+              </view>
+              <view class="weui-form-preview__ft">
+                <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">取消订单</navigator>
+              </view>
+            </view>
+            <view class="weui-form-preview">
+              <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__label">价格：</view>
+                <view class="weui-form-preview__value_in-hd">￥3.00</view>
+              </view>
+              <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">送货地址：</view>
+                  <view class="weui-form-preview__value">软件园4号楼908</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">快递公司：</view>
+                  <view class="weui-form-preview__value">中通快递</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">下单时间：</view>
+                  <view class="weui-form-preview__value">2018-08-08 10:23:32</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">订单编号：</view>
+                  <view class="weui-form-preview__value">20180808102332</view>
+                </view>
+              </view>
+              <view class="weui-form-preview__ft">
+                <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">取消订单</navigator>
+              </view>
+            </view>
+            <view class="weui-form-preview">
+              <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__label">价格：</view>
+                <view class="weui-form-preview__value_in-hd">￥3.00</view>
+              </view>
+              <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">送货地址：</view>
+                  <view class="weui-form-preview__value">软件园4号楼908</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">快递公司：</view>
+                  <view class="weui-form-preview__value">中通快递</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">下单时间：</view>
+                  <view class="weui-form-preview__value">2018-08-08 10:23:32</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">订单编号：</view>
+                  <view class="weui-form-preview__value">20180808102332</view>
+                </view>
+              </view>
+              <view class="weui-form-preview__ft">
+                <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">取消订单</navigator>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          配送中
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          已完成
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

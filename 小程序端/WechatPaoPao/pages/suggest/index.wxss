@@ -1,0 +1,10 @@
+/* pages/suggest/index.wxss */
+
+.container {
+  text-align: center;
+}
+
+.page__title image {
+  width: 300rpx;
+  height: 300rpx;
+}

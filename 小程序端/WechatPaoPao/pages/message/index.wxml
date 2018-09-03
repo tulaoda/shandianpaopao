@@ -1,0 +1,12 @@
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">订单提醒</view>
+    <view class="weui-cell__ft">你的订单已接单</view>
+  </view>
+</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">系统提醒</view>
+    <view class="weui-cell__ft">打烊了，明天再来下单吧</view>
+  </view>
+</view>
