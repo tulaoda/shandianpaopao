@@ -41,9 +41,9 @@ public class UserController {
         }
 
         //小程序唯一标识   (在微信小程序管理后台获取)
-        String wxspAppid = "wx842944599fa4c887";
+        String wxspAppid = "wxc4c6ab37b0d79d8b";
         //小程序的 app secret (在微信小程序管理后台获取)
-        String wxspSecret = "3fcd9037092bceb1b5b340be45043e63";
+        String wxspSecret = "6ede70b3af433549cb921077a531ae18";
         //授权（必填）
         String grant_type = "authorization_code";
 
