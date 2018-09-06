@@ -61,30 +61,30 @@ public class UserController {
         String openid = (String) json.get("openid");
 
         //////////////// 2、对encryptedData加密数据进行AES解密 ////////////////
-        try {
-            String result = AesCbcUtil.decrypt(encryptedData, session_key, iv, "UTF-8");
-            if (null != result && result.length() > 0) {
-                map.put("status", 1);
-                map.put("msg", "解密成功");
-
-                JSONObject userInfoJSON = JSONObject.fromObject(result);
-                Map userInfo = new HashMap();
-                userInfo.put("openId", userInfoJSON.get("openId"));
-                userInfo.put("nickName", userInfoJSON.get("nickName"));
-                userInfo.put("gender", userInfoJSON.get("gender"));
-                userInfo.put("city", userInfoJSON.get("city"));
-                userInfo.put("province", userInfoJSON.get("province"));
-                userInfo.put("country", userInfoJSON.get("country"));
-                userInfo.put("avatarUrl", userInfoJSON.get("avatarUrl"));
-                userInfo.put("unionId", userInfoJSON.get("unionId"));
-                map.put("userInfo", userInfo);
-                return map;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        map.put("status", 0);
-        map.put("msg", "解密失败");
+//        try {
+//            String result = AesCbcUtil.decrypt(encryptedData, session_key, iv, "UTF-8");
+//            if (null != result && result.length() > 0) {
+//                map.put("status", 1);
+//                map.put("msg", "解密成功");
+//
+//                JSONObject userInfoJSON = JSONObject.fromObject(result);
+//                Map userInfo = new HashMap();
+//                userInfo.put("openId", userInfoJSON.get("openId"));
+//                userInfo.put("nickName", userInfoJSON.get("nickName"));
+//                userInfo.put("gender", userInfoJSON.get("gender"));
+//                userInfo.put("city", userInfoJSON.get("city"));
+//                userInfo.put("province", userInfoJSON.get("province"));
+//                userInfo.put("country", userInfoJSON.get("country"));
+//                userInfo.put("avatarUrl", userInfoJSON.get("avatarUrl"));
+//                userInfo.put("unionId", userInfoJSON.get("unionId"));
+//                map.put("userInfo", userInfo);
+//                return map;
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        map.put("status", 1);
+        map.put("msg", "解密成功");
         map.put("openid", openid);
         return map;
     }

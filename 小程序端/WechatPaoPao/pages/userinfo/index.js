@@ -96,10 +96,10 @@ Page({
       return;
     }
     
-    if (!this.validate.checkForm(e)) {
-      const error = this.validate.errorList[0]
-      return alert(error.msg)
-    }
+    // if (!this.validate.checkForm(e)) {
+    //   const error = this.validate.errorList[0]
+    //   return alert(error.msg)
+    // }
     //保存用户信息
     SERVER.getJSON('/user/register', {
       name: username,
