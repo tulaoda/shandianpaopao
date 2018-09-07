@@ -12,6 +12,7 @@ public class First {
     @GeneratedValue
     private Long id;
     private Long orderId;
+    private String openId;
     private String receiver;
     private String telephone;
     private String address;
@@ -29,8 +30,9 @@ public class First {
 
     }
 
-    public First(Long orderId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, String price, String createTime, String payTime) {
+    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, String price, String createTime, String payTime) {
         this.orderId = orderId;
+        this.openId = openId;
         this.receiver = receiver;
         this.telephone = telephone;
         this.address = address;
@@ -59,6 +61,14 @@ public class First {
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
+    }
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
     public String getReceiver() {
