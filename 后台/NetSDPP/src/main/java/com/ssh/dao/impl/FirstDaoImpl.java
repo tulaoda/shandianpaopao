@@ -53,4 +53,9 @@ public class FirstDaoImpl implements FirstDao {
     public void flush() {
         getCurrentSession().flush();
     }
+
+    public List<First> orderByState(String openId, String state) {
+        String hql = "from First where openId=? and state=?";
+        return getCurrentSession().createQuery(hql).setString(0, openId).setString(1, state).list();
+    }
 }

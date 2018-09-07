@@ -1,8 +1,10 @@
 package com.ssh.controller;
 
+import com.ssh.entity.Banner;
 import com.ssh.entity.First;
 import com.ssh.service.FirstService;
 import com.ssh.utils.CreateOrderID;
+import com.ssh.utils.enums.ResultStatus;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Api(value = "first")
@@ -26,7 +29,7 @@ public class FirstController {
     @ApiImplicitParams({})
     @RequestMapping(value = "createOrder", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    public Map register(@RequestBody First first) {
+    public Map createOrder(@RequestBody First first) {
         Map map = new HashMap();
         first.setOrderId(CreateOrderID.getCurrentTimeWithoutSpace());
         first.setState("0");
@@ -35,4 +38,17 @@ public class FirstController {
         map.put("msg", "执行成功！");
         return map;
     }
+
+    @ApiImplicitParams({})
+    @RequestMapping(value = "orderByState", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public Map orderByState(String openId, String state) {
+        Map map = new HashMap();
+        List<First> list = firstService.orderByState(openId, state);
+        map.put("content", list);
+        map.put("msg", ResultStatus.SUCCESS.getCode());
+        map.put("msg", "执行成功！");
+        return map;
+    }
+
 }

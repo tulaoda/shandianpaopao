@@ -65,7 +65,8 @@ Page({
       "receiveType": receiveType,
       "receiver": receiver,
       "size": size,
-      "telephone": telephone
+      "telephone": telephone,
+      "openId": wx.getStorageSync('openid')
     }, function(res) {
       console.log(res.data)
     });
