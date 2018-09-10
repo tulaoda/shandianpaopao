@@ -47,14 +47,17 @@ public class FirstController {
         firstService.updateFirstStateByOrderId(orderId, state);
         map.put("msg", ResultStatus.SUCCESS.getCode());
         map.put("msg", "更新成功!");
-        @RequestMapping(value = "orderByState", method = RequestMethod.GET, produces = "application/json")
-        @ResponseBody
-        public Map orderByState (String openId, String state){
-            Map map = new HashMap();
-            List<First> list = firstService.orderByState(openId, state);
-            map.put("content", list);
-            map.put("msg", "执行成功！");
-            return map;
-        }
-
+        return map;
     }
+
+    @RequestMapping(value = "orderByState", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public Map orderByState(String openId, String state) {
+        Map map = new HashMap();
+        List<First> list = firstService.orderByState(openId, state);
+        map.put("content", list);
+        map.put("msg", "执行成功！");
+        return map;
+    }
+
+}
