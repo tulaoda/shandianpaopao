@@ -35,8 +35,13 @@ public class BannerController {
         Banner banner = new Banner();
         banner.setImgUrl(imgUrl);
         banner.setImgOrder(imgOrder);
-        bannerService.save(banner);
-        map.put("msg", "执行成功！");
+
+        long flag = bannerService.save(banner);
+        if (flag < 0) {
+            map.put("msg", "执行成功！");
+            return map;
+        }
+        map.put("msg", "执行失败！");
         return map;
     }
 
@@ -45,8 +50,9 @@ public class BannerController {
     @ResponseBody
     public Map listBanner() {
         Map<String, Object> map = new HashMap<String, Object>();
-        List<Banner> list=bannerService.findAll();
-        map.put("content",list);
+        List<Banner> list = bannerService.findAll();
+//        if ()
+            map.put("content", list);
         map.put("msg", ResultStatus.SUCCESS.getCode());
         return map;
     }

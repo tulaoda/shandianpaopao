@@ -19,7 +19,7 @@ button[type=default] {
 .weui-navbar__slider {
   width: 3em;
   /* background-color: #000; */
-  margin: 0 2.5em;
+  margin: 0 1.5em;
 }
 
 .weui-navbar__item.weui-bar__item_on {

@@ -27,11 +27,17 @@
   width: 70%;
 }
 
-.weui-cell__bd{
+.weui-cell__bd {
   flex: 2;
 }
 
 .first_bd {
-  width: 100rpx!important;
+  width: 100rpx !important;
   flex: 1;
+}
+
+.getPower {
+  height: 200rpx;
+  line-height: 200rpx;
+
 }

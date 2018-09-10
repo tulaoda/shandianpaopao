@@ -112,7 +112,7 @@ public class UserController {
         user.setSchool(school);
         user.setAddress(address);
         user.setTelephone(telephone);
-        userService.save(user);
+        long flag = userService.save(user);
         map.put("user", openid);
         return map;
     }

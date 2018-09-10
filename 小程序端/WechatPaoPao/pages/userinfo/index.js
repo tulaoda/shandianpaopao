@@ -81,12 +81,12 @@ Page({
     let openid = wx.getStorageSync('openid')
     //数据校验
     this.initValidate();
-    
+
     if (!/^1[34578]\d{9}$/.test(phone)) {
       wx.showModal({
         title: '提示',
         content: '请输入有效手机号码',
-        showCancel:false
+        showCancel: false
       })
       // wx.showToast({
       //   title: '请输入有效手机号码',
@@ -95,7 +95,7 @@ Page({
       // })
       return;
     }
-    
+
     // if (!this.validate.checkForm(e)) {
     //   const error = this.validate.errorList[0]
     //   return alert(error.msg)
@@ -145,6 +145,17 @@ Page({
       code: {
         required: '请输入验证码',
       },
+    })
+  },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function() {
+    console.log("sdd")
+    wx.showModal({
+      title: '提示',
+      content: '请输入有效手机号码',
+      showCancel: false
     })
   },
 })

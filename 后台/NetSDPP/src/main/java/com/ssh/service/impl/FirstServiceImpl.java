@@ -46,4 +46,8 @@ public class FirstServiceImpl implements FirstService {
     public void flush() {
 
     }
+
+    public List<First> orderByState(String openId, String state) {
+        return firstDao.orderByState(openId, state);
+    }
 }

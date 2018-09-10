@@ -33,12 +33,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "个人信息",
-					"pathName": "pages/userinfo/index"
+					"pathName": "pages/userinfo/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人订单页",
+					"pathName": "pages/order1/index"
 				}
 			]
 		}
