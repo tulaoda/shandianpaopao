@@ -36,7 +36,7 @@ public class FirstServiceImpl implements FirstService {
     }
 
     public void saveOrUpdate(First entity) {
-
+       firstDao.saveOrUpdate(entity);
     }
 
     public void delete(Long id) {
@@ -49,5 +49,9 @@ public class FirstServiceImpl implements FirstService {
 
     public List<First> orderByState(String openId, String state) {
         return firstDao.orderByState(openId, state);
+    }
+
+    public void updateFirstByOrderId(Long orderId, String state) {
+        firstDao.updateFirstByOrderId(orderId,state);
     }
 }
