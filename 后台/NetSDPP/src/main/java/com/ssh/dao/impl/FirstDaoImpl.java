@@ -55,7 +55,8 @@ public class FirstDaoImpl implements FirstDao {
         getCurrentSession().flush();
     }
 
-    public First getFirstByOrderId(Long orderId){
-        return (First)getCurrentSession().createCriteria(First.class).add(Restrictions.eq("orderId",orderId)).uniqueResult();
+    public void updateFirstStateByOrderId(Long orderId, String state) {
+        String hql = "update First set state=? where orderId=?";
+        getCurrentSession().createQuery(hql).setString(0, state).setLong(1, orderId).executeUpdate();
     }
 }

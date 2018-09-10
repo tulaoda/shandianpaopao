@@ -7,6 +7,5 @@ import com.ssh.entity.First;
 import java.util.List;
 
 public interface FirstService extends DomainDao<First, Long> {
-    List<First> orderByState(String openId, String state);
-    void updateFirstByOrderId(Long orderId,String state);
+    void updateFirstStateByOrderId(Long orderId, String state);
 }

@@ -3,6 +3,7 @@ package com.ssh.controller;
 import com.ssh.entity.First;
 import com.ssh.service.FirstService;
 import com.ssh.utils.CreateOrderID;
+import com.ssh.utils.enums.ResultStatus;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -33,6 +34,17 @@ public class FirstController {
         first.setCreateTime(CreateOrderID.getCurrentTime());
         firstService.save(first);
         map.put("msg", "执行成功！");
+        return map;
+    }
+
+    @ApiImplicitParams({})
+    @RequestMapping(value = "updateStateByOrderId", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public Map updateStateByOrderId(Long orderId, String state) {
+        Map map = new HashMap();
+        firstService.updateFirstStateByOrderId(orderId, state);
+        map.put("msg", ResultStatus.SUCCESS.getCode());
+        map.put("msg", "更新成功!");
         return map;
     }
 
