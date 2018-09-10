@@ -4,6 +4,7 @@ import com.ssh.dao.FirstDao;
 import com.ssh.entity.First;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -52,5 +53,9 @@ public class FirstDaoImpl implements FirstDao {
 
     public void flush() {
         getCurrentSession().flush();
+    }
+
+    public First getFirstByOrderId(Long orderId){
+        return (First)getCurrentSession().createCriteria(First.class).add(Restrictions.eq("orderId",orderId)).uniqueResult();
     }
 }
