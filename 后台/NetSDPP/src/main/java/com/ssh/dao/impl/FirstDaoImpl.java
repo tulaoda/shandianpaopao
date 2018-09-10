@@ -4,7 +4,6 @@ import com.ssh.dao.FirstDao;
 import com.ssh.entity.First;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -58,5 +57,10 @@ public class FirstDaoImpl implements FirstDao {
     public void updateFirstStateByOrderId(Long orderId, String state) {
         String hql = "update First set state=? where orderId=?";
         getCurrentSession().createQuery(hql).setString(0, state).setLong(1, orderId).executeUpdate();
+    }
+
+    public List<First> orderByState(String openId, String state) {
+        String hql = "from First where openId=? and state=?";
+        return getCurrentSession().createQuery(hql).setString(0, openId).setString(1, state).list();
     }
 }

@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface FirstService extends DomainDao<First, Long> {
     void updateFirstStateByOrderId(Long orderId, String state);
+
+    List<First> orderByState(String openId, String state);
 }

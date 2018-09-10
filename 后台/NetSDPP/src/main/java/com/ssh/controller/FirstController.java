@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Api(value = "first")
@@ -38,6 +39,7 @@ public class FirstController {
     }
 
     @ApiImplicitParams({})
+
     @RequestMapping(value = "updateStateByOrderId", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public Map updateStateByOrderId(Long orderId, String state) {
@@ -45,7 +47,14 @@ public class FirstController {
         firstService.updateFirstStateByOrderId(orderId, state);
         map.put("msg", ResultStatus.SUCCESS.getCode());
         map.put("msg", "更新成功!");
-        return map;
-    }
+        @RequestMapping(value = "orderByState", method = RequestMethod.GET, produces = "application/json")
+        @ResponseBody
+        public Map orderByState (String openId, String state){
+            Map map = new HashMap();
+            List<First> list = firstService.orderByState(openId, state);
+            map.put("content", list);
+            map.put("msg", "执行成功！");
+            return map;
+        }
 
-}
+    }
