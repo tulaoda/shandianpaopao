@@ -40,7 +40,7 @@ public class FirstController {
     }
 
     @ApiImplicitParams({})
-    @RequestMapping(value = "orderByState", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "orderByState", method = RequestMethod.GET)
     @ResponseBody
     public Map orderByState(String openId, String state) {
         Map map = new HashMap();
