@@ -1,5 +1,10 @@
 const config = require('./utils/config')
 App({
+  globalData: {
+    userInfo: null,
+    appId: 'wxc4c6ab37b0d79d8b',
+    key: '869e66a03137f4704c49e113797c0dfa' //App-key
+  },
   onLaunch: function() {
 
     //调用API从本地缓存中获取数据
@@ -62,8 +67,6 @@ App({
 
       })
   },
-  globalData: {
-    userInfo: null
-  }
+
 
 })

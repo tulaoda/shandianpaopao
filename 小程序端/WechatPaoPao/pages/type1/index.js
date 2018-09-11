@@ -1,5 +1,7 @@
 // pages/type1/index.js
 const SERVER = require('../../utils/server.js');
+const WxPay = require('../../utils/wxPay.js');
+import WxValidate from '../../utils/WxValidate'
 Page({
 
   /**
@@ -37,7 +39,24 @@ Page({
       indexPostType: e.detail.value,
     })
   },
+  showModal(error) {
+    wx.showModal({
+      content: error.msg,
+      showCancel: false,
+    })
+  },
   formSubmit: function(e) {
+    const params = e.detail.value
+
+    console.log(params)
+
+    // 传入表单数据，调用验证方法
+    if (!this.WxValidate.checkForm(params)) {
+      const error = this.WxValidate.errorList[0]
+      this.showModal(error)
+      return false
+    }
+
     let postSize = this.data.arrayPostSize[this.data.indexPostSize];
     let postTime = this.data.arrayPostTime[this.data.indexPostTime];
     let postClassify = this.data.arrayPostClassify[this.data.indexPostClassify];
@@ -68,14 +87,71 @@ Page({
       "telephone": telephone,
       "openId": wx.getStorageSync('openid')
     }, function(res) {
+      WxPay.wxPay(
+        res.data.orderId,
+        res.data.fee
+      );
+
       console.log(res.data)
+      console.log("======");
     });
+
+    this.showModal({
+      msg: '提交成功',
+    })
+  },
+  initValidate() {
+    // 验证字段的规则
+    const rules = {
+      receiver: {
+        required: true,
+      },
+      telephone: {
+        required: true,
+        tel: true,
+      },
+      address: {
+        required: true,
+      },
+      information: {
+        required: true,
+      },
+
+    }
+
+    // 验证字段的提示信息，若不传则调用默认的信息
+    const messages = {
+      receiver: {
+        required: '请输入收货人',
+      },
+      telephone: {
+        required: '请输入手机号',
+        tel: '请输入正确的手机号',
+      },
+      address: {
+        required: '请输入地址',
+      },
+      information: {
+        required: '请输入快递信息',
+      },
+
+
+    }
+
+    // 创建实例对象
+    this.WxValidate = new WxValidate(rules, messages)
+
+    // 自定义验证规则
+    this.WxValidate.addMethod('assistance', (value, param) => {
+      return this.WxValidate.optional(value) || (value.length >= 1 && value.length <= 2)
+    }, '请勾选1-2个敲码助手')
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.initValidate()
+    console.log(this.WxValidate)
   },
 
   /**
@@ -126,4 +202,5 @@ Page({
   onShareAppMessage: function() {
 
   }
+
 })

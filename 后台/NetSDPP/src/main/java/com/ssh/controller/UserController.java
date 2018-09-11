@@ -7,6 +7,7 @@ import com.ssh.entity.User;
 import com.ssh.service.UserService;
 //import com.ssh.utils.AesCbcUtil;
 import com.ssh.utils.HttpRequest;
+import com.ssh.wxpay.constant.Constant;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -41,9 +42,9 @@ public class UserController {
         }
 
         //小程序唯一标识   (在微信小程序管理后台获取)
-        String wxspAppid = "wxc4c6ab37b0d79d8b";
+        String wxspAppid = Constant.APP_ID;
         //小程序的 app secret (在微信小程序管理后台获取)
-        String wxspSecret = "6ede70b3af433549cb921077a531ae18";
+        String wxspSecret = Constant.APP_SECRET;
         //授权（必填）
         String grant_type = "authorization_code";
 

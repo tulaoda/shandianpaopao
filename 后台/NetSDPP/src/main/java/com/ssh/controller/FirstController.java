@@ -35,6 +35,8 @@ public class FirstController {
         first.setCreateTime(CreateOrderID.getCurrentTime());
         firstService.save(first);
         map.put("msg", "执行成功！");
+        map.put("fee", first.getPrice());
+        map.put("orderId", first.getOrderId());
         return map;
     }
 

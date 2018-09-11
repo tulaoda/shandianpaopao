@@ -11,19 +11,21 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Controller
+@RequestMapping(value = "/wx")
 public class PayController {
 
     private static Logger log = Logger.getLogger(PayController.class);
 
     @ResponseBody
-    @RequestMapping(value = "/prepay", produces = "text/html;charset=UTF-8")
-    public String prePay(String code, ModelMap model, HttpServletRequest request) {
+    @RequestMapping(value = "/prepay", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+    public String prePay(String openId, String fee, String orderId, ModelMap model, HttpServletRequest request) {
 
         String content = null;
         Map map = new HashMap();
@@ -33,10 +35,7 @@ public class PayController {
         String info = "";
 
         log.error("\n======================================================");
-        log.error("code: " + code);
-
-        String openId = getOpenId(code);
-        if(StringUtils.isBlank(openId)) {
+        if (StringUtils.isBlank(openId)) {
             result = false;
             info = "获取到openId为空";
         } else {
@@ -47,11 +46,11 @@ public class PayController {
             log.error("openId: " + openId + ", clientIP: " + clientIP);
 
             String randomNonceStr = RandomUtils.generateMixString(32);
-            String prepayId = unifiedOrder(openId, clientIP, randomNonceStr);
+            String prepayId = unifiedOrder(openId, clientIP, randomNonceStr, Integer.parseInt(fee), orderId);
 
             log.error("prepayId: " + prepayId);
 
-            if(StringUtils.isBlank(prepayId)) {
+            if (StringUtils.isBlank(prepayId)) {
                 result = false;
                 info = "出错了，未获取到prepayId";
             } else {
@@ -81,14 +80,14 @@ public class PayController {
 
             HttpResult httpResult = httpUtil.doGet(url, null, null);
 
-            if(httpResult.getStatusCode() == 200) {
+            if (httpResult.getStatusCode() == 200) {
 
                 JsonParser jsonParser = new JsonParser();
                 JsonObject obj = (JsonObject) jsonParser.parse(httpResult.getBody());
 
                 log.error("getOpenId: " + obj.toString());
 
-                if(obj.get("errcode") != null) {
+                if (obj.get("errcode") != null) {
                     log.error("getOpenId returns errcode: " + obj.get("errcode"));
                     return "";
                 } else {
@@ -104,15 +103,16 @@ public class PayController {
 
     /**
      * 调用统一下单接口
+     *
      * @param openId
      */
-    private String unifiedOrder(String openId, String clientIP, String randomNonceStr) {
+    private String unifiedOrder(String openId, String clientIP, String randomNonceStr, int fee, String orderId) {
 
         try {
 
             String url = Constant.URL_UNIFIED_ORDER;
 
-            PayInfo payInfo = createPayInfo(openId, clientIP, randomNonceStr);
+            PayInfo payInfo = createPayInfo(openId, clientIP, randomNonceStr, fee, orderId);
             String md5 = getSign(payInfo);
             payInfo.setSign(md5);
 
@@ -129,10 +129,10 @@ public class PayController {
 
 
             String return_code = result.get("return_code");
-            if(StringUtils.isNotBlank(return_code) && return_code.equals("SUCCESS")) {
+            if (StringUtils.isNotBlank(return_code) && return_code.equals("SUCCESS")) {
 
                 String return_msg = result.get("return_msg");
-                if(StringUtils.isNotBlank(return_msg) && !return_msg.equals("OK")) {
+                if (StringUtils.isNotBlank(return_msg) && !return_msg.equals("OK")) {
                     //log.error("统一下单错误！");
                     return "";
                 }
@@ -151,7 +151,7 @@ public class PayController {
         return "";
     }
 
-    private PayInfo createPayInfo(String openId, String clientIP, String randomNonceStr) {
+    private PayInfo createPayInfo(String openId, String clientIP, String randomNonceStr, int fee, String orderId) {
 
         Date date = new Date();
         String timeStart = TimeUtils.getFormatTime(date, Constant.TIME_FORMAT);
@@ -165,10 +165,10 @@ public class PayController {
         payInfo.setDevice_info("WEB");
         payInfo.setNonce_str(randomNonceStr);
         payInfo.setSign_type("MD5");  //默认即为MD5
-        payInfo.setBody("JSAPI支付测试");
-        payInfo.setAttach("支付测试4luluteam");
+        payInfo.setBody("闪电跑跑服务");
+        payInfo.setAttach("闪电跑跑");
         payInfo.setOut_trade_no(randomOrderId);
-        payInfo.setTotal_fee(1);
+        payInfo.setTotal_fee(fee * 100);
         payInfo.setSpbill_create_ip(clientIP);
         payInfo.setTime_start(timeStart);
         payInfo.setTime_expire(timeExpire);
@@ -204,7 +204,6 @@ public class PayController {
 
         return CommonUtil.getMD5(sb.toString().trim()).toUpperCase();
     }
-
 
 
 }
