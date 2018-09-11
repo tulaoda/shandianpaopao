@@ -62,6 +62,12 @@ Page({
     let postClassify = this.data.arrayPostClassify[this.data.indexPostClassify];
     let postType = this.data.arrayPostType[this.data.indexPostType];
     console.log(postSize + postTime + postClassify + postType)
+    if (postSize | postTime | postClassify | postType == '请选择') {
+      this.showModal({
+        msg: '请选择快递大小及其他信息',
+      })
+      return;
+    }
     // var that = this;
     // var formData = new FormData();
     let {
@@ -95,10 +101,6 @@ Page({
       console.log(res.data)
       console.log("======");
     });
-
-    this.showModal({
-      msg: '提交成功',
-    })
   },
   initValidate() {
     // 验证字段的规则

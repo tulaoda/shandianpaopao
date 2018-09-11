@@ -71,6 +71,12 @@ Page({
       phone: e.detail.value
     })
   },
+  showModal(error) {
+    wx.showModal({
+      content: error.msg,
+      showCancel: false,
+    })
+  },
   saveUserInfo: function(e) {
     let {
       username,
@@ -82,20 +88,41 @@ Page({
     //数据校验
     this.initValidate();
 
-    if (!/^1[34578]\d{9}$/.test(phone)) {
+    if (username == '') {
       wx.showModal({
-        title: '提示',
-        content: '请输入有效手机号码',
-        showCancel: false
+        content: '请输入姓名',
+        showCancel: false,
       })
-      // wx.showToast({
-      //   title: '请输入有效手机号码',
-      //   icon: 'success',
-      //   duration: 2000
-      // })
       return;
     }
-
+    if (address == '') {
+      wx.showModal({
+        content: '请输入地址',
+        showCancel: false,
+      })
+      return;
+    }
+    if (school == '') {
+      wx.showModal({
+        content: '请选择学校',
+        showCancel: false,
+      })
+      return;
+    }
+    if (phone == '') {
+      wx.showModal({
+        content: '请输入手机号',
+        showCancel: false,
+      })
+      return;
+    }
+    if (!/^1[34578]\d{9}$/.test(phone)) {
+      wx.showModal({
+        content: '请输入正确的手机号码',
+        showCancel: false,
+      })
+      return;
+    }
     // if (!this.validate.checkForm(e)) {
     //   const error = this.validate.errorList[0]
     //   return alert(error.msg)
@@ -108,7 +135,14 @@ Page({
       school: school,
       openid: openid,
     }, function(res) {
-      console.log(res.data)
+      if (res.data.user != '') {
+        wx.showModal({
+          content: '提交成功',
+          showCancel: false,
+        })
+
+      }
+      // console.log(res.data)
       // let imgUrls = [];
       // res.data.content.map(item => {
       //   imgUrls.push(item.imgUrl)
@@ -120,6 +154,7 @@ Page({
     console.log(username + address + phone + school + openid)
 
   },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
