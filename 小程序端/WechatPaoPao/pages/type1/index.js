@@ -16,7 +16,7 @@ Page({
     indexPostClassify: 0,
     arrayPostType: ['请选择', '本人签收', '同学代签'],
     indexPostType: 0,
-    price: ['3', '4', '5', '10']
+    price: [0.01, 4, 5, 10]
   },
   //选择快递大小
   bindPickerChangePostSize: function(e) {

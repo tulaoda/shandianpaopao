@@ -42,21 +42,21 @@ public class FirstController {
 
     @ApiImplicitParams({})
 
-    @RequestMapping(value = "updateStateByOrderId", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "updateStateByOrderId", method = RequestMethod.GET)
     @ResponseBody
     public Map updateStateByOrderId(Long orderId, String state) {
         Map map = new HashMap();
         firstService.updateFirstStateByOrderId(orderId, state);
-        map.put("msg", ResultStatus.SUCCESS.getCode());
+        map.put("code", ResultStatus.SUCCESS.getCode());
         map.put("msg", "更新成功!");
         return map;
     }
 
     @RequestMapping(value = "orderByState", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public Map orderByState(String openId, String state,int page,int pageSize) {
+    public Map orderByState(String openId, String state, int page, int pageSize) {
         Map map = new HashMap();
-        List<First> list = firstService.orderByState(openId, state,page,pageSize);
+        List<First> list = firstService.orderByState(openId, state, page, pageSize);
         map.put("content", list);
         map.put("msg", "执行成功！");
         return map;

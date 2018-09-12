@@ -25,7 +25,7 @@ public class PayController {
 
     @ResponseBody
     @RequestMapping(value = "/prepay", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
-    public String prePay(String openId, String fee, String orderId, ModelMap model, HttpServletRequest request) {
+    public String prePay(String openId, int fee, String orderId, ModelMap model, HttpServletRequest request) {
 
         String content = null;
         Map map = new HashMap();
@@ -46,7 +46,7 @@ public class PayController {
             log.error("openId: " + openId + ", clientIP: " + clientIP);
 
             String randomNonceStr = RandomUtils.generateMixString(32);
-            String prepayId = unifiedOrder(openId, clientIP, randomNonceStr, Integer.parseInt(fee), orderId);
+            String prepayId = unifiedOrder(openId, clientIP, randomNonceStr, fee, orderId);
 
             log.error("prepayId: " + prepayId);
 
@@ -168,7 +168,7 @@ public class PayController {
         payInfo.setBody("闪电跑跑服务");
         payInfo.setAttach("闪电跑跑");
         payInfo.setOut_trade_no(randomOrderId);
-        payInfo.setTotal_fee(fee * 100);
+        payInfo.setTotal_fee(fee);
         payInfo.setSpbill_create_ip(clientIP);
         payInfo.setTime_start(timeStart);
         payInfo.setTime_expire(timeExpire);
