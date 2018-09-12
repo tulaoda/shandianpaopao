@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public void saveOrUpdate(User entity) {
-
+        userDao.saveOrUpdate(entity);
     }
 
     public void delete(Long id) {
@@ -46,5 +46,9 @@ public class UserServiceImpl implements UserService {
 
     public void flush() {
 
+    }
+
+    public User getUserByOpenId(String openId) {
+        return userDao.getUserByOpenId(openId);
     }
 }

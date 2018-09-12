@@ -105,15 +105,26 @@ public class UserController {
                         String school,
                         String address,
                         String telephone) {
-
         Map map = new HashMap();
-        User user = new User();
-        user.setOpenid(openid);
-        user.setName(name);
-        user.setSchool(school);
-        user.setAddress(address);
-        user.setTelephone(telephone);
-        long flag = userService.save(user);
+        User user;
+        if (userService.getUserByOpenId(openid) == null) {
+            user = new User();
+            user.setOpenid(openid);
+            user.setName(name);
+            user.setSchool(school);
+            user.setAddress(address);
+            user.setTelephone(telephone);
+            userService.save(user);
+        } else {
+            user = userService.getUserByOpenId(openid);
+            user.setOpenid(openid);
+            user.setName(name);
+            user.setSchool(school);
+            user.setAddress(address);
+            user.setTelephone(telephone);
+            userService.saveOrUpdate(user);
+        }
+
         map.put("user", openid);
         return map;
     }
