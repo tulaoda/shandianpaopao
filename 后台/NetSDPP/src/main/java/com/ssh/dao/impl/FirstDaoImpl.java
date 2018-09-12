@@ -29,7 +29,7 @@ public class FirstDaoImpl implements FirstDao {
     }
 
     public List<First> findAll() {
-        String hql = "from First";
+        String hql = "from First order by id desc";
         return getCurrentSession().createQuery(hql).list();
     }
 
@@ -59,8 +59,10 @@ public class FirstDaoImpl implements FirstDao {
         getCurrentSession().createQuery(hql).setString(0, state).setLong(1, orderId).executeUpdate();
     }
 
-    public List<First> orderByState(String openId, String state) {
-        String hql = "from First where openId=? and state=?";
-        return getCurrentSession().createQuery(hql).setString(0, openId).setString(1, state).list();
+    public List<First> orderByState(String openId, String state, int page, int pageSize) {
+        String hql = "from First where openId=? and state=? order by id desc";
+        return getCurrentSession().createQuery(hql).setString(0, openId).setString(1, state).
+                setFirstResult((page - 1) * pageSize)
+                .setMaxResults(pageSize).list();
     }
 }

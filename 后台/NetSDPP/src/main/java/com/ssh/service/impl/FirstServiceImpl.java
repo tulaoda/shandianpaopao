@@ -51,8 +51,8 @@ public class FirstServiceImpl implements FirstService {
         firstDao.updateFirstStateByOrderId(orderId, state);
     }
 
-    public List<First> orderByState(String openId, String state) {
-        return firstDao.orderByState(openId, state);
+    public List<First> orderByState(String openId, String state, int page, int pageSize) {
+        return firstDao.orderByState(openId, state, page, pageSize);
     }
 
 

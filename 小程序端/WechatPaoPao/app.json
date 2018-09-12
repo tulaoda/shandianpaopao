@@ -12,7 +12,8 @@
     "pages/order3/index",
     "pages/order4/index",
     "pages/userinfo/index",
-    "pages/suggest/index"
+    "pages/suggest/index",
+    "pages/admin/admin_first"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -54,9 +54,9 @@ public class FirstController {
 
     @RequestMapping(value = "orderByState", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public Map orderByState(String openId, String state) {
+    public Map orderByState(String openId, String state,int page,int pageSize) {
         Map map = new HashMap();
-        List<First> list = firstService.orderByState(openId, state);
+        List<First> list = firstService.orderByState(openId, state,page,pageSize);
         map.put("content", list);
         map.put("msg", "执行成功！");
         return map;
