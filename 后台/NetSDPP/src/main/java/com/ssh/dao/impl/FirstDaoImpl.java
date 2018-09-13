@@ -42,7 +42,7 @@ public class FirstDaoImpl implements FirstDao {
     }
 
     public void saveOrUpdate(First entity) {
-        getCurrentSession().saveOrUpdate(entity);
+        getCurrentSession().update(entity);
     }
 
     public void delete(Long id) {
@@ -54,15 +54,29 @@ public class FirstDaoImpl implements FirstDao {
         getCurrentSession().flush();
     }
 
-    public void updateFirstStateByOrderId(Long orderId, String state) {
-        String hql = "update First set state=? where orderId=?";
+    public void updateFirstStateByOrderId(Long orderId, String state) throws Exception{
+        String hql = "UPDATE First f SET f.state=? WHERE f.orderId=?";
         getCurrentSession().createQuery(hql).setString(0, state).setLong(1, orderId).executeUpdate();
     }
 
-    public List<First> orderByState(String openId, String state, int page, int pageSize) {
+    public List<First> orderByState(String openId, String state, int page, int pageSize) throws Exception{
         String hql = "from First where openId=? and state=? order by id desc";
         return getCurrentSession().createQuery(hql).setString(0, openId).setString(1, state).
                 setFirstResult((page - 1) * pageSize)
                 .setMaxResults(pageSize).list();
+    }
+
+    public Long findFirstIdByOrderId(Long orderId) throws Exception{
+        String hql = "SELECT id FROM First WHERE orderId=?";
+        return (Long) getCurrentSession().createQuery(hql).setLong(0, orderId).uniqueResult();
+    }
+
+    public First findFirstByOrderId(Long orderId) throws Exception{
+        String hql = "FROM First WHERE orderId=?";
+        return (First) getCurrentSession().createQuery(hql).setLong(0, orderId).uniqueResult();
+    }
+
+    public First findFirstById(Long id) throws Exception{
+        return (First) getCurrentSession().load(First.class, id);
     }
 }

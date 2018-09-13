@@ -25,12 +25,14 @@ public class First {
     private String price;
     private String createTime;
     private String payTime;
+    private String receiptTime;
+    private Long courierId;
 
     public First() {
 
     }
 
-    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, String price, String createTime, String payTime) {
+    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, String price, String createTime, String payTime, String receiptTime, Long courierId) {
         this.orderId = orderId;
         this.openId = openId;
         this.receiver = receiver;
@@ -45,6 +47,8 @@ public class First {
         this.price = price;
         this.createTime = createTime;
         this.payTime = payTime;
+        this.receiptTime = receiptTime;
+        this.courierId = courierId;
     }
 
     public Long getId() {
@@ -165,5 +169,21 @@ public class First {
 
     public void setPayTime(String payTime) {
         this.payTime = payTime;
+    }
+
+    public String getReceiptTime() {
+        return receiptTime;
+    }
+
+    public void setReceiptTime(String receiptTime) {
+        this.receiptTime = receiptTime;
+    }
+
+    public Long getCourierId() {
+        return courierId;
+    }
+
+    public void setCourierId(Long courierId) {
+        this.courierId = courierId;
     }
 }
