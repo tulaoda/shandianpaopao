@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,33 +48,46 @@ public class FirstController {
         return map;
     }
 
-    @ApiImplicitParams({})
-    @RequestMapping(value = "updateStateByOrderId", method = RequestMethod.POST, produces = "application/json")
+//    @ApiImplicitParams({})
+//    @RequestMapping(value = "updateStateByOrderId", method = RequestMethod.POST, produces = "application/json")
+//    @ResponseBody
+//    public Map updateStateByOrderId(Long orderId, String state, String openId) {
+//        Map map = new HashMap();
+//        Long firstId= null;
+//        First first;
+//        try {
+//            firstId = firstService.findFirstIdByOrderId(orderId);
+//            first = firstService.findFirstById(firstId);
+//            first.setState(state);
+//            firstService.saveOrUpdate(first);
+//            map.put("msg", ResultStatus.SUCCESS.getCode());
+//            map.put("msg", "更新成功!");
+//            //订单状态为:已接单,接单时间,发送模板消息
+//            if (state == "2") {
+//
+//                first.setReceiptTime(CreateOrderID.getCurrentTime());
+//
+//                map.put("msg", sendTemplateMsg(openId, orderId));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//
+//        return map;
+//    }
+
+    @RequestMapping(value = "updateStateByOrderId", method = RequestMethod.GET)
     @ResponseBody
-    public Map updateStateByOrderId(Long orderId, String state, String openId) {
+    public Map updateStateByOrderId(Long orderId, String state, String openId, ModelMap model, HttpServletRequest request) throws Exception {
         Map map = new HashMap();
-        Long firstId= null;
         First first;
-        try {
-            firstId = firstService.findFirstIdByOrderId(orderId);
-            first = firstService.findFirstById(firstId);
-            first.setState(state);
-            firstService.saveOrUpdate(first);
-            map.put("msg", ResultStatus.SUCCESS.getCode());
-            map.put("msg", "更新成功!");
-            //订单状态为:已接单,接单时间,发送模板消息
-            if (state == "2") {
-
-                first.setReceiptTime(CreateOrderID.getCurrentTime());
-
-                map.put("msg", sendTemplateMsg(openId, orderId));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-
+        first = firstService.findFirstByOrderId(orderId);
+        first.setState(state);
+        firstService.saveOrUpdate(first);
+        map.put("msg", ResultStatus.SUCCESS.getCode());
+        map.put("msg", "更新成功!");
         return map;
     }
 
@@ -138,7 +152,7 @@ public class FirstController {
         tem.setUrl("");
         //订单信息
         String orderIdStr = orderId + "";
-        First first= null;
+        First first = null;
         try {
             first = firstService.findFirstByOrderId(orderId);
         } catch (Exception e) {
