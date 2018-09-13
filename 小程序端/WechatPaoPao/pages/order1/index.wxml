@@ -46,7 +46,7 @@
                 </view>
               </view>
               <view class="weui-form-preview__ft">
-                <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">取消订单</navigator>
+                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" id="{{item.orderId}}" bindtap='cancelOrder'>取消订单</view>
               </view>
             </view>
 
