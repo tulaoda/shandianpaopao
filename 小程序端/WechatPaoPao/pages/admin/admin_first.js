@@ -32,13 +32,6 @@ Page({
     state_3_Data: [],
   },
   onLoad: function() {
-    this.setData({
-      state_0_Data: [],
-      state_0: {
-        page: 1,
-        pageSize: 5
-      }
-    })
     var that = this;
     wx.getSystemInfo({
       success: function(res) {
@@ -56,22 +49,6 @@ Page({
         console.log(res)
       }
     })
-  },
-  cancelOrder: function(e) {
-    console.log(e.currentTarget.id)
-    SERVER.getJSON('/first/updateOrderState', {
-      orderId: e.currentTarget.id,
-      state: 5,
-    }, function(res) {
-      if (res.data.msg = '更新成功') {
-        if (getCurrentPages().length != 0) {
-          //刷新当前页面的数据
-          getCurrentPages()[getCurrentPages().length - 1].onLoad()
-        }
-      }
-      console.log(res)
-    })
-
   },
   tabClick: function(e) {
     this.setData({
@@ -101,9 +78,28 @@ Page({
 
   },
   open: function(e) {
-    // console.log(e.currentTarget.id)
-    wx.makePhoneCall({
-      phoneNumber: e.currentTarget.id //仅为示例，并非真实的电话号码
+    console.log(e.currentTarget.id)
+    SERVER.getJSON('/first/updateOrderState', {
+      orderId: orderId,
+      state: 2
+    }, function(res) {
+      if (res.data.msg = '更新成功') {
+
+      }
+      console.log(res)
+    })
+
+  },
+  finish: function(e) {
+    console.log(e.currentTarget.id)
+    SERVER.getJSON('/first/updateOrderState', {
+      orderId: orderId,
+      state: 3
+    }, function(res) {
+      if (res.data.msg = '更新成功') {
+
+      }
+      console.log(res)
     })
   },
   //以下为scrollview

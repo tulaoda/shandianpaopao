@@ -15,7 +15,7 @@ public class CreateOrderID {
     public static Long getCurrentTimeWithoutSpace() {
         Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
-        Long dateString = Long.parseLong(formatter.format(currentTime)+getRandom());
+        Long dateString = Long.parseLong(formatter.format(currentTime) + getRandom());
         return dateString;
     }
 
@@ -34,12 +34,8 @@ public class CreateOrderID {
      */
     public static String getRandom() {
         Random rad = new Random();
-
-        String result = rad.nextInt(10000) + "";
-
-        if (result.length() == 1) {
-            result = "000" + result;
-        }
+        int temp = rad.nextInt(90) + 10;
+        String result = String.valueOf(temp);
         return result;
     }
 }

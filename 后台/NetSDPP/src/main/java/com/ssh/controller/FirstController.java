@@ -15,16 +15,11 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.Timestamp;
+import java.util.*;
 
 @Api(value = "first")
 @Controller
@@ -40,7 +35,7 @@ public class FirstController {
         Map map = new HashMap();
         first.setOrderId(CreateOrderID.getCurrentTimeWithoutSpace());
         first.setState("0");
-        first.setCreateTime(CreateOrderID.getCurrentTime());
+        first.setCreatetime(new Date());
         firstService.save(first);
         map.put("msg", "执行成功！");
         map.put("fee", first.getPrice());
@@ -78,9 +73,11 @@ public class FirstController {
 //        return map;
 //    }
 
-    @RequestMapping(value = "updateStateByOrderId", method = RequestMethod.GET)
+    @RequestMapping(value = "updateOrderState", method = RequestMethod.GET)
     @ResponseBody
-    public Map updateStateByOrderId(Long orderId, String state, String openId, ModelMap model, HttpServletRequest request) throws Exception {
+    public Map updateStateByOrderId(
+            @RequestParam(required = true, value = "orderId") Long orderId,
+            @RequestParam(required = true, value = "state") String state) throws Exception {
         Map map = new HashMap();
         First first;
         first = firstService.findFirstByOrderId(orderId);
@@ -92,7 +89,7 @@ public class FirstController {
     }
 
     @ApiImplicitParams({})
-    @RequestMapping(value = "orderByState", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "orderByState", method = RequestMethod.GET)
     @ResponseBody
     public Map orderByState(String openId, String state, int page, int pageSize) {
         Map map = new HashMap();

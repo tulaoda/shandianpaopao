@@ -1,0 +1,176 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <scroll-view scroll-y="true" style="height: 1080rpx;" bindscrolltolower="exhibition_lower">
+            <view class="weui-form-preview" wx:for="{{state_0_Data}}">
+              <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__label">价格：</view>
+                <view class="weui-form-preview__value_in-hd">￥{{item.price}}</view>
+              </view>
+              <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">收件人：</view>
+                  <view class="weui-form-preview__value">{{item.receiver}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">联系电话：</view>
+                  <view class="weui-form-preview__value">{{item.telephone}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">送货地址：</view>
+                  <view class="weui-form-preview__value">{{item.address}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">快递信息：</view>
+                  <view class="weui-form-preview__value">{{item.information}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">下单时间：</view>
+                  <view class="weui-form-preview__value">{{item.createTime}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">订单编号：</view>
+                  <view class="weui-form-preview__value">{{item.orderId}}</view>
+                </view>
+              </view>
+            </view>
+
+          </scroll-view>
+        </view>
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <scroll-view scroll-y="true" style="height: 1080rpx;" bindscrolltolower="exhibition_lower">
+            <view class="weui-form-preview" wx:for="{{state_1_Data}}">
+              <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__label">价格：</view>
+                <view class="weui-form-preview__value_in-hd">￥{{item.price}}</view>
+              </view>
+              <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">收件人：</view>
+                  <view class="weui-form-preview__value">{{item.receiver}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">联系电话：</view>
+                  <view class="weui-form-preview__value">{{item.telephone}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">送货地址：</view>
+                  <view class="weui-form-preview__value">{{item.address}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">快递信息：</view>
+                  <view class="weui-form-preview__value">{{item.information}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">下单时间：</view>
+                  <view class="weui-form-preview__value">{{item.createTime}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">订单编号：</view>
+                  <view class="weui-form-preview__value">{{item.orderId}}</view>
+                </view>
+
+              </view>
+              <view class="weui-form-preview__ft">
+                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" id="{{item.orderId}}" bindtap='open'>接单</view>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <scroll-view scroll-y="true" style="height: 1080rpx;" bindscrolltolower="exhibition_lower">
+            <view class="weui-form-preview" wx:for="{{state_2_Data}}">
+              <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__label">价格：</view>
+                <view class="weui-form-preview__value_in-hd">￥{{item.price}}</view>
+              </view>
+              <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">收件人：</view>
+                  <view class="weui-form-preview__value">{{item.receiver}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">联系电话：</view>
+                  <view class="weui-form-preview__value">{{item.telephone}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">送货地址：</view>
+                  <view class="weui-form-preview__value">{{item.address}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">快递信息：</view>
+                  <view class="weui-form-preview__value">{{item.information}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">下单时间：</view>
+                  <view class="weui-form-preview__value">{{item.createTime}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">订单编号：</view>
+                  <view class="weui-form-preview__value">{{item.orderId}}</view>
+                </view>
+              </view>
+              <view class="weui-form-preview__ft">
+                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" id="{{item.orderId}}" bindtap='finish'>配送完成</view>
+              </view>
+            </view>
+
+          </scroll-view>
+        </view>
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+          <scroll-view scroll-y="true" style="height: 1080rpx;" bindscrolltolower="exhibition_lower">
+            <view class="weui-form-preview" wx:for="{{state_3_Data}}">
+              <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__label">价格：</view>
+                <view class="weui-form-preview__value_in-hd">￥{{item.price}}</view>
+              </view>
+              <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">收件人：</view>
+                  <view class="weui-form-preview__value">{{item.receiver}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">联系电话：</view>
+                  <view class="weui-form-preview__value">{{item.telephone}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">送货地址：</view>
+                  <view class="weui-form-preview__value">{{item.address}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">快递信息：</view>
+                  <view class="weui-form-preview__value">{{item.information}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">下单时间：</view>
+                  <view class="weui-form-preview__value">{{item.createTime}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">订单编号：</view>
+                  <view class="weui-form-preview__value">{{item.orderId}}</view>
+                </view>
+              </view>
+            </view>
+
+          </scroll-view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>
