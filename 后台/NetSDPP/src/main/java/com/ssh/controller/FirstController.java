@@ -78,7 +78,7 @@ public class FirstController {
 //        return map;
 //    }
 
-    @RequestMapping(value = "updateStateByOrderId", method = RequestMethod.GET)
+    @RequestMapping(value = "updateStateByOrderId", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public Map updateStateByOrderId(Long orderId, String state, String openId, ModelMap model, HttpServletRequest request) throws Exception {
         Map map = new HashMap();
@@ -92,7 +92,7 @@ public class FirstController {
     }
 
     @ApiImplicitParams({})
-    @RequestMapping(value = "orderByState", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "orderByState", method = RequestMethod.GET)
     @ResponseBody
     public Map orderByState(String openId, String state, int page, int pageSize) {
         Map map = new HashMap();
