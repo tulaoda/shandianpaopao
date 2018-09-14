@@ -18,8 +18,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Timestamp;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Api(value = "first")
 @Controller
@@ -35,7 +37,7 @@ public class FirstController {
         Map map = new HashMap();
         first.setOrderId(CreateOrderID.getCurrentTimeWithoutSpace());
         first.setState("0");
-        first.setCreatetime(new Date());
+        first.setCreateTime(CreateOrderID.getCurrentTime());
         firstService.save(first);
         map.put("msg", "执行成功！");
         map.put("fee", first.getPrice());

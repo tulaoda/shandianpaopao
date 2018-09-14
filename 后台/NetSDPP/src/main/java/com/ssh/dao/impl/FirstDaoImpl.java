@@ -60,7 +60,7 @@ public class FirstDaoImpl implements FirstDao {
     }
 
     public List<First> orderByState(String openId, String state, int page, int pageSize) throws Exception {
-        String hql = "from First where openId=? and state=? order by createtime desc";
+        String hql = "from First where openId=? and state=? order by orderId desc";
         return getCurrentSession().createQuery(hql).setString(0, openId).setString(1, state).
                 setFirstResult((page - 1) * pageSize)
                 .setMaxResults(pageSize).list();
