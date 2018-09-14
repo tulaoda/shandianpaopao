@@ -2,12 +2,14 @@ package com.ssh.controller;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.ssh.service.FirstService;
 import com.ssh.wxpay.constant.Constant;
 import com.ssh.wxpay.entity.PayInfo;
 import com.ssh.wxpay.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +22,17 @@ import java.util.*;
 @Controller
 @RequestMapping(value = "/wx")
 public class PayController {
-
+    @Autowired
+    private FirstService firstService;
     private static Logger log = Logger.getLogger(PayController.class);
 
     @ResponseBody
     @RequestMapping(value = "/prepay", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
-    public String prePay(String openId, int fee, String orderId, ModelMap model, HttpServletRequest request) {
+    public String prePay(String openId, String orderId, ModelMap model, HttpServletRequest request) {
+//从数据库获取price
+        Long id=Long.parseLong(orderId);
+        double price=firstService.getPrice(id);
+        int fee=(int)price*100;
 
         String content = null;
         Map map = new HashMap();
