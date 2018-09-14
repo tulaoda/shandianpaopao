@@ -79,11 +79,20 @@ public class FirstController {
     @ResponseBody
     public Map updateStateByOrderId(
             @RequestParam(required = true, value = "orderId") Long orderId,
-            @RequestParam(required = true, value = "state") String state) throws Exception {
+            @RequestParam(required = true, value = "state") String state,
+            @RequestParam(required = true, value = "openId") String openId
+            ) throws Exception {
         Map map = new HashMap();
         First first;
         first = firstService.findFirstByOrderId(orderId);
         first.setState(state);
+        //订单状态为:已接单
+        if (state == "2") {
+            //接单时间
+            first.setReceiptTime(CreateOrderID.getCurrentTime());
+            //发送模板消息
+            map.put("msg", sendTemplateMsg(openId, orderId));
+        }
         firstService.saveOrUpdate(first);
         map.put("msg", ResultStatus.SUCCESS.getCode());
         map.put("msg", "更新成功!");
@@ -112,9 +121,9 @@ public class FirstController {
         String token = getAccessToken();
         //获取模板
         Template template = getTemplate(openid, orderId);
+        //发送请求
         String requestUrl = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
         requestUrl = requestUrl.replace("ACCESS_TOKEN", token);
-        //发送请求
         String jsonResult = HttpRequest.sendPost(requestUrl, template.toJSON());
         if (jsonResult != null) {
             return "发送模板消息成功";
