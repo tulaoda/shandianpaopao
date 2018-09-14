@@ -7,12 +7,12 @@ import com.ssh.entity.First;
 import java.util.List;
 
 public interface FirstService extends DomainDao<First, Long> {
-    void updateFirstStateByOrderId(Long orderId, String state)throws Exception;
+    void updateFirstStateByOrderId(Long orderId, String state);
 
-    List<First> orderByState(String openId, String state,int page,int pageSize)throws Exception;
-
-
-    First findFirstByOrderId(Long orderId)throws Exception;
+    List<First> orderByState(String openId, String state,int page,int pageSize);
 
 
+    First findFirstByOrderId(Long orderId);
+
+    Double findPriceByOrderId(Long orderId);
 }

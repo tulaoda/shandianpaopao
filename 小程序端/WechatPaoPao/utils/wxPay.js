@@ -12,8 +12,7 @@ function wxPay(orderId, fee) {
 
   SERVER.getJSON('/wx/prepay', {
     openId: wx.getStorageSync('openid'),
-    orderId: orderId,
-    fee:fee*100
+    orderId: orderId
   }, function(res) {
     if (res.data.result == true) {
       console.log(res.data.nonceStr)

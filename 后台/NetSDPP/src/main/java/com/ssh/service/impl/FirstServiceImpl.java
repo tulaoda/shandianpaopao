@@ -47,23 +47,27 @@ public class FirstServiceImpl implements FirstService {
 
     }
 
-    public void updateFirstStateByOrderId(Long orderId, String state) throws Exception {
+    public void updateFirstStateByOrderId(Long orderId, String state) {
         firstDao.updateFirstStateByOrderId(orderId, state);
     }
 
-    public List<First> orderByState(String openId, String state, int page, int pageSize) throws Exception {
+    public List<First> orderByState(String openId, String state, int page, int pageSize) {
         return firstDao.orderByState(openId, state, page, pageSize);
     }
 
-    public Long findFirstIdByOrderId(Long orderId) throws Exception {
+    public Long findFirstIdByOrderId(Long orderId) {
         return firstDao.findFirstIdByOrderId(orderId);
     }
 
-    public First findFirstByOrderId(Long orderId) throws Exception {
+    public First findFirstByOrderId(Long orderId) {
         return firstDao.findFirstByOrderId(orderId);
     }
 
-    public First findFirstById(Long id) throws Exception {
+    public First findFirstById(Long id) {
         return firstDao.findFirstById(id);
+    }
+
+    public Double findPriceByOrderId(Long orderId) {
+        return firstDao.findPriceByOrderId(orderId);
     }
 }
