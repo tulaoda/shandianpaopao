@@ -62,6 +62,7 @@ Page({
     SERVER.getJSON('/first/updateOrderState', {
       orderId: e.currentTarget.id,
       state: 5,
+      openId: wx.getStorageSync('openid')
     }, function(res) {
       if (res.data.msg = '更新成功') {
         if (getCurrentPages().length != 0) {

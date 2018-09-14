@@ -14,5 +14,5 @@ public interface FirstService extends DomainDao<First, Long> {
 
     First findFirstByOrderId(Long orderId);
 
-    String getPrice(Long orderId);
+    Double getPrice(Long orderId);
 }

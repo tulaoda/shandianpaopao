@@ -30,10 +30,9 @@ public class PayController {
     @RequestMapping(value = "/prepay", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
     public String prePay(String openId, String orderId, ModelMap model, HttpServletRequest request) {
 //从数据库获取price
-        Long id=Long.parseLong(orderId);
-        String price=firstService.getPrice(id);
-
-        int fee=Integer.parseInt(price)*100;
+        Long id = Long.parseLong(orderId);
+        Double price = firstService.getPrice(id) * 100;
+        int fee = (new Double(price)).intValue();
 
         String content = null;
         Map map = new HashMap();

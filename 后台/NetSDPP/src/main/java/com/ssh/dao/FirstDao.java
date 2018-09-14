@@ -23,5 +23,5 @@ public interface FirstDao extends DomainDao<First, Long> {
     First findFirstById(Long id);
 
     //通过OrderID查询price
-    String getPrice(Long orderId);
+    Double getPrice(Long orderId);
 }

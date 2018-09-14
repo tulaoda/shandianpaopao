@@ -34,7 +34,8 @@ function wxPay(orderId, fee) {
         'success': function(res) {
           SERVER.getJSON('/first/updateOrderState', {
             orderId: orderId,
-            state: 1
+            state: 1,
+            openId:wx.getStorageSync('openid')
           }, function(res) {
 
             console.log(res)

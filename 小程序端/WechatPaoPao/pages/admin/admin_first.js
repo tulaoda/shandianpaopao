@@ -80,8 +80,9 @@ Page({
   open: function(e) {
     console.log(e.currentTarget.id)
     SERVER.getJSON('/first/updateOrderState', {
-      orderId: orderId,
-      state: 2
+      orderId: e.currentTarget.id,
+      state: 2,
+      openId: wx.getStorageSync('openid')
     }, function(res) {
       if (res.data.msg = '更新成功') {
 
@@ -93,8 +94,9 @@ Page({
   finish: function(e) {
     console.log(e.currentTarget.id)
     SERVER.getJSON('/first/updateOrderState', {
-      orderId: orderId,
-      state: 3
+      orderId: e.currentTarget.id,
+      state: 3,
+      openId: wx.getStorageSync('openid')
     }, function(res) {
       if (res.data.msg = '更新成功') {
 
