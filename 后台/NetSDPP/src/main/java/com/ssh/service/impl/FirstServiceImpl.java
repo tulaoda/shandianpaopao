@@ -67,7 +67,7 @@ public class FirstServiceImpl implements FirstService {
         return firstDao.findFirstById(id);
     }
 
-    public Double getPrice(Long orderId) {
+    public String getPrice(Long orderId) {
         return firstDao.getPrice(orderId);
     }
 }

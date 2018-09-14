@@ -80,8 +80,8 @@ public class FirstDaoImpl implements FirstDao {
         return (First) getCurrentSession().get(First.class, id);
     }
 
-    public Double getPrice(Long orderId){
+    public String getPrice(Long orderId){
         String hql="SELECT price FROM First WHERE orderId=?";
-        return (Double)getCurrentSession().createQuery(hql).setLong(0,orderId).uniqueResult();
+        return (String)getCurrentSession().createQuery(hql).setLong(0,orderId).uniqueResult();
     }
 }
