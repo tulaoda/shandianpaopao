@@ -11,9 +11,8 @@ public interface FirstService extends DomainDao<First, Long> {
 
     List<First> orderByState(String openId, String state,int page,int pageSize)throws Exception;
 
-    Long findFirstIdByOrderId(Long orderId)throws Exception;
 
     First findFirstByOrderId(Long orderId)throws Exception;
 
-    First findFirstById(Long id)throws Exception;
+
 }

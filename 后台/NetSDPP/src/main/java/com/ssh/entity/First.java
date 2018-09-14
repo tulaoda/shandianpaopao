@@ -9,8 +9,6 @@ import javax.persistence.*;
 @Table(name = "t_first")
 public class First {
     @Id
-    @GeneratedValue
-    private Long id;
     private Long orderId;
     private String openId;
     private String receiver;
@@ -51,13 +49,6 @@ public class First {
         this.courierId = courierId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getOrderId() {
         return orderId;
