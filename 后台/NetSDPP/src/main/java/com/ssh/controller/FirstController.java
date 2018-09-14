@@ -1,6 +1,8 @@
 package com.ssh.controller;
 
+import com.ssh.entity.Courier;
 import com.ssh.entity.First;
+import com.ssh.service.CourierService;
 import com.ssh.service.FirstService;
 import com.ssh.utils.CreateOrderID;
 import com.ssh.utils.HttpRequest;
@@ -31,6 +33,8 @@ import java.util.Map;
 public class FirstController {
     @Autowired
     private FirstService firstService;
+    @Autowired
+    private CourierService courierService;
 
     @ApiImplicitParams({})
     @RequestMapping(value = "createOrder", method = RequestMethod.POST, produces = "application/json")
@@ -52,28 +56,23 @@ public class FirstController {
     @ResponseBody
     public Map updateStateByOrderId(Long orderId, String state, String openId) {
         Map map = new HashMap();
-        Long firstId= null;
+        Long firstId = null;
         First first;
         try {
             firstId = firstService.findFirstIdByOrderId(orderId);
             first = firstService.findFirstById(firstId);
             first.setState(state);
+            //订单状态为:已接单,接单时间,发送模板消息
+            if (state == "2") {
+                first.setReceiptTime(CreateOrderID.getCurrentTime());
+                map.put("msg", sendTemplateMsg(openId, orderId));
+            }
             firstService.saveOrUpdate(first);
             map.put("msg", ResultStatus.SUCCESS.getCode());
             map.put("msg", "更新成功!");
-            //订单状态为:已接单,接单时间,发送模板消息
-            if (state == "2") {
-
-                first.setReceiptTime(CreateOrderID.getCurrentTime());
-
-                map.put("msg", sendTemplateMsg(openId, orderId));
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
         return map;
     }
 
@@ -138,22 +137,23 @@ public class FirstController {
         tem.setUrl("");
         //订单信息
         String orderIdStr = orderId + "";
-        First first= null;
+        First first;
+        Courier courier;
         try {
             first = firstService.findFirstByOrderId(orderId);
+            courier = courierService.findCourierById(first.getCourierId());
+            List<TemplateParam> paras = new ArrayList<TemplateParam>();
+            paras.add(new TemplateParam("订单号", orderIdStr, "#FF3333"));
+            paras.add(new TemplateParam("商品名称", "闪电跑跑服务", "#0044BB"));
+            paras.add(new TemplateParam("订单状态", "已接单", "#0044BB"));
+            paras.add(new TemplateParam("接单人", courier.getName(), "#0044BB"));
+            paras.add(new TemplateParam("联系电话", courier.getTelephone(), "#0044BB"));
+            paras.add(new TemplateParam("订单金额", first.getPrice(), "#0044BB"));
+            paras.add(new TemplateParam("接单时间", first.getReceiptTime(), "#0044BB"));
+            tem.setTemplateParamList(paras);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        List<TemplateParam> paras = new ArrayList<TemplateParam>();
-        paras.add(new TemplateParam("订单号", orderIdStr, "#FF3333"));
-        paras.add(new TemplateParam("商品名称", "闪电跑跑服务", "#0044BB"));
-        paras.add(new TemplateParam("订单状态", first.getState(), "#0044BB"));
-        paras.add(new TemplateParam("接单人", "", "#0044BB"));
-        paras.add(new TemplateParam("联系电话", "", "#0044BB"));
-        paras.add(new TemplateParam("订单金额", first.getPrice(), "#0044BB"));
-        paras.add(new TemplateParam("接单时间", first.getReceiptTime(), "#0044BB"));
-        tem.setTemplateParamList(paras);
         return tem;
     }
 
