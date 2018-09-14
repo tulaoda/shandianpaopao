@@ -4,8 +4,6 @@ package com.ssh.entity;
 import com.ssh.utils.CreateOrderID;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
 @Table(name = "t_first")
@@ -23,7 +21,7 @@ public class First {
     private String receiveType;
     private String state;
     private String price;
-    private Date createtime;
+    private String createTime;
     private String payTime;
     private String receiptTime;
     private Long courierId;
@@ -32,7 +30,7 @@ public class First {
 
     }
 
-    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, String price, Date createtime, String payTime, String receiptTime, Long courierId) {
+    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, String price, String createTime, String payTime, String receiptTime, Long courierId) {
         this.orderId = orderId;
         this.openId = openId;
         this.receiver = receiver;
@@ -45,11 +43,12 @@ public class First {
         this.receiveType = receiveType;
         this.state = state;
         this.price = price;
-        this.createtime = createtime;
+        this.createTime = createTime;
         this.payTime = payTime;
         this.receiptTime = receiptTime;
         this.courierId = courierId;
     }
+
 
     public Long getOrderId() {
         return orderId;
@@ -147,12 +146,12 @@ public class First {
         this.price = price;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     public String getPayTime() {
