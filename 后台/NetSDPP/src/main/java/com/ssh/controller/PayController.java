@@ -31,8 +31,9 @@ public class PayController {
     public String prePay(String openId, String orderId, ModelMap model, HttpServletRequest request) {
 //从数据库获取price
         Long id=Long.parseLong(orderId);
-        double price=firstService.getPrice(id);
-        int fee=(int)price*100;
+        String price=firstService.getPrice(id);
+
+        int fee=Integer.parseInt(price)*100;
 
         String content = null;
         Map map = new HashMap();
