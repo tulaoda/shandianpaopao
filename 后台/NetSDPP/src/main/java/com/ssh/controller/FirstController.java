@@ -93,21 +93,21 @@ public class FirstController {
         First first;
         first = firstService.findFirstByOrderId(orderId);
         first.setState(state);
-        if (state.equals('1')) {
+        if (state.equals("1")) {
             first.setPayTime(CreateOrderID.getCurrentTime());
         }
         //订单状态为:已接单
-        if (state.equals('2')) {
+        if (state.equals("2")) {
             //接单人,时间
             first.setCourierId(courierId);
             first.setReceiptTime(CreateOrderID.getCurrentTime());
             //发送模板消息
             // sendTemplateMsg(openId, orderId, courierId);
-            map.put("msg", sendTemplateMsg(openId, orderId, courierId, form_id));
+            map.put("templateMsg", sendTemplateMsg(openId, orderId, courierId, form_id));
         }
 
         firstService.saveOrUpdate(first);
-        map.put("msg", ResultStatus.SUCCESS.getCode());
+        map.put("code", ResultStatus.SUCCESS.getCode());
         map.put("msg", "更新成功!");
         return map;
     }
@@ -151,7 +151,7 @@ public class FirstController {
         String token = getAccessToken();
         //获取模板
         Template template = getTemplate(openid, orderId, courierId, form_id);
-        //发送请求
+        //发送请求  https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=ACCESS_TOKEN
         String requestUrl = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=ACCESS_TOKEN";
         requestUrl = requestUrl.replace("ACCESS_TOKEN", token);
         String jsonResult = HttpRequest.sendPost(requestUrl, template.toJSON());
@@ -186,6 +186,7 @@ public class FirstController {
         tem.setForm_id(form_id);
         tem.setToUser(openid);
         tem.setUrl("");
+        tem.setPage("/pages/order1/index");
         //订单信息
         String orderIdStr = orderId + "";
 
@@ -194,14 +195,14 @@ public class FirstController {
 
 
         List<TemplateParam> paras = new ArrayList<TemplateParam>();
-        paras.add(new TemplateParam("订单号", orderIdStr, "#FF3333"));
-        paras.add(new TemplateParam("商品名称", "闪电跑跑服务", "#0044BB"));
-        paras.add(new TemplateParam("订单状态", first.getState(), "#0044BB"));
-        paras.add(new TemplateParam("接单人", user.getName(), "#0044BB"));
-        paras.add(new TemplateParam("联系电话", user.getTelephone(), "#0044BB"));
-        paras.add(new TemplateParam("订单金额", first.getPrice().toString(), "#0044BB"));
-        paras.add(new TemplateParam("接单时间", first.getReceiptTime(), "#0044BB"));
-        tem.setTemplateParamList(paras);
+        paras.add(new TemplateParam("keyword1", orderIdStr, "#FF3333"));
+        paras.add(new TemplateParam("keyword2", "闪电跑跑服务", "#0044BB"));
+        paras.add(new TemplateParam("keyword3", "已接单", "#0044BB"));
+        paras.add(new TemplateParam("keyword4", user.getName(), "#0044BB"));
+        paras.add(new TemplateParam("keyword5", user.getTelephone(), "#0044BB"));
+        paras.add(new TemplateParam("keyword6", first.getPrice().toString(), "#0044BB"));
+        paras.add(new TemplateParam("keyword7", first.getReceiptTime(), "#0044BB"));
+        tem.setData(paras);
         return tem;
     }
 

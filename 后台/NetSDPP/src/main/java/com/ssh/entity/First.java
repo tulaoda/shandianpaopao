@@ -25,6 +25,8 @@ public class First {
     private String payTime;
     private String receiptTime;
     private String courierId;
+    private String courierName;
+    private String courierTel;
 
     public First() {
 
@@ -175,5 +177,21 @@ public class First {
 
     public void setCourierId(String courierId) {
         this.courierId = courierId;
+    }
+
+    public String getCourierName() {
+        return courierName;
+    }
+
+    public void setCourierName(String courierName) {
+        this.courierName = courierName;
+    }
+
+    public String getCourierTel() {
+        return courierTel;
+    }
+
+    public void setCourierTel(String courierTel) {
+        this.courierTel = courierTel;
     }
 }

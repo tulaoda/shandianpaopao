@@ -103,19 +103,20 @@ Page({
     }
 
   },
+
+
   submitInfo: function(e) {
     console.log(e.detail.formId);
-    form_id: e.detail.formId
-  },
-
-  open: function(e) {
+    this.setData({
+      form_id: e.detail.formId
+    })
     console.log(e.currentTarget.dataset.openid)
     SERVER.getJSON('/first/updateOrderState', {
       orderId: e.currentTarget.id,
       state: 2,
       courierId: wx.getStorageSync('openid'),
       openId: e.currentTarget.dataset.openid,
-      form_id: form_id
+      form_id: e.detail.formId
     }, function(res) {
       if (res.data.msg = '更新成功') {
         if (getCurrentPages().length != 0) {
