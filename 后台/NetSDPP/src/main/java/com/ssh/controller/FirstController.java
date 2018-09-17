@@ -102,8 +102,8 @@ public class FirstController {
             first.setCourierId(courierId);
             first.setReceiptTime(CreateOrderID.getCurrentTime());
             //发送模板消息
-            sendTemplateMsg(openId, orderId, courierId, form_id);
-//            map.put("msg", sendTemplateMsg(openId, orderId, courierId, form_id));
+            // sendTemplateMsg(openId, orderId, courierId);
+            map.put("msg", sendTemplateMsg(openId, orderId, courierId, form_id));
         }
 
         firstService.saveOrUpdate(first);
