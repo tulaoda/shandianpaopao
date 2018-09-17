@@ -2,6 +2,7 @@ package com.ssh.controller;
 
 import com.ssh.entity.First;
 import com.ssh.entity.User;
+import com.ssh.service.CourierService;
 import com.ssh.service.FirstService;
 import com.ssh.service.UserService;
 import com.ssh.utils.CreateOrderID;
@@ -31,9 +32,10 @@ import java.util.Map;
 public class FirstController {
     @Autowired
     private FirstService firstService;
-
     @Autowired
     private UserService userService;
+    @Autowired
+    private CourierService courierService;
 
     @ApiImplicitParams({})
     @RequestMapping(value = "createOrder", method = RequestMethod.POST, produces = "application/json")
@@ -144,6 +146,20 @@ public class FirstController {
         map.put("msg", "执行成功！");
         return map;
     }
+
+    @ApiImplicitParams({})
+    @RequestMapping(value = "findCourierByOpenId", method = RequestMethod.GET)
+    @ResponseBody
+    public Map findCourierByOpenId(String openId) {
+        Map map = new HashMap();
+        boolean flag = courierService.findCourierByOpenid(openId);
+        if (flag) {
+            map.put("code", ResultStatus.SUCCESS.getCode());
+        } else
+            map.put("code", ResultStatus.FAILURE.getCode());
+        return map;
+    }
+
 
     //发送模板消息
     public int sendTemplateMsg(String openid, Long orderId, String courierId, String form_id) {
