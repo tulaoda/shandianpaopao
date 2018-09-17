@@ -97,14 +97,15 @@ public class FirstController {
             first.setPayTime(CreateOrderID.getCurrentTime());
         }
         //订单状态为:已接单
-//        if (state.equals('2')) {
-        //接单时间
-        first.setCourierId(courierId);
-        first.setReceiptTime(CreateOrderID.getCurrentTime());
-        //发送模板消息
-        // sendTemplateMsg(openId, orderId, courierId);
-//        }
-        map.put("msg", sendTemplateMsg(openId, orderId, courierId, form_id));
+        if (state.equals('2')) {
+            //接单人,时间
+            first.setCourierId(courierId);
+            first.setReceiptTime(CreateOrderID.getCurrentTime());
+            //发送模板消息
+            sendTemplateMsg(openId, orderId, courierId, form_id);
+//            map.put("msg", sendTemplateMsg(openId, orderId, courierId, form_id));
+        }
+
         firstService.saveOrUpdate(first);
         map.put("msg", ResultStatus.SUCCESS.getCode());
         map.put("msg", "更新成功!");
