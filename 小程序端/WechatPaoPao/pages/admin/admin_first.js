@@ -10,6 +10,7 @@ Page({
     activeIndex: "0",
     sliderOffset: 0,
     sliderLeft: 0,
+    form_id: '',
     state_0: {
       page: 1,
       pageSize: 5
@@ -62,7 +63,10 @@ Page({
         });
       }
     });
-    this.request_order_state_0_data()
+    this.request_order_state_0_data();
+    this.request_order_state_1_data();
+    this.request_order_state_2_data();
+    this.request_order_state_3_data();
   },
   onShow: function() {
     wx.setNavigationBarTitle({
@@ -99,13 +103,19 @@ Page({
     }
 
   },
+  submitInfo: function(e) {
+    console.log(e.detail.formId);
+    form_id: e.detail.formId
+  },
+
   open: function(e) {
     console.log(e.currentTarget.dataset.openid)
     SERVER.getJSON('/first/updateOrderState', {
       orderId: e.currentTarget.id,
       state: 2,
       courierId: wx.getStorageSync('openid'),
-      openId: e.currentTarget.dataset.openid
+      openId: e.currentTarget.dataset.openid,
+      form_id: form_id
     }, function(res) {
       if (res.data.msg = '更新成功') {
         if (getCurrentPages().length != 0) {

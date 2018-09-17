@@ -57,3 +57,11 @@
   padding-left: 3rpx;
   padding-right: 3rpx;
 }
+
+.jiedan {
+  width: 100%;
+}
+
+form {
+  width: 100%;
+}
