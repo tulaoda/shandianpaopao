@@ -85,7 +85,9 @@
 
               </view>
               <view class="weui-form-preview__ft">
-                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" id="{{item.orderId}}" bindtap='open' data-openId="{{item.openId}}">接单</view>
+                <form bindsubmit="submitInfo" report-submit='true'>
+                  <button class="weui__btn weui__btn_default jiedan" hover-class="weui-form-preview__btn_active" form-type="submit" id="{{item.orderId}}" bindtap='open' data-openId="{{item.openId}}">接单</button>
+                </form>
               </view>
             </view>
           </scroll-view>
