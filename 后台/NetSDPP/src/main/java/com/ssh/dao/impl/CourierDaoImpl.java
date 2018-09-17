@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class CourierDaoImpl implements CourierDao {
 
@@ -17,5 +19,15 @@ public class CourierDaoImpl implements CourierDao {
     }
     public Courier findCourierById(Long id){
         return (Courier)getCurrentSession().get(Courier.class,id);
+    }
+
+    public boolean findCourierByOpenid(String openId) {
+        String hql="FROM Courier WHERE openid=?";
+        List<Courier> couriers=getCurrentSession().createQuery(hql).setString(0,openId).list();
+        if (couriers.size()>0){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
