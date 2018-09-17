@@ -33,11 +33,26 @@ Page({
   },
   onLoad: function() {
     this.setData({
-      state_0_Data: [],
       state_0: {
         page: 1,
         pageSize: 5
-      }
+      },
+      state_1: {
+        page: 1,
+        pageSize: 5
+      },
+      state_2: {
+        page: 1,
+        pageSize: 5
+      },
+      state_3: {
+        page: 1,
+        pageSize: 5
+      },
+      state_0_Data: [],
+      state_1_Data: [],
+      state_2_Data: [],
+      state_3_Data: [],
     })
     var that = this;
     wx.getSystemInfo({

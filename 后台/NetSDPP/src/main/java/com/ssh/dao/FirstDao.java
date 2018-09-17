@@ -13,6 +13,10 @@ public interface FirstDao extends DomainDao<First, Long> {
     //按订单状态分页查询订单
     List<First> orderByState(String openId, String state, int page, int pageSize);
 
+    //按状态查询所有订单
+    List<First> orderAllByState(String state, int page, int pageSize);
+
+
     //通过orderID查询First的ID
     Long findFirstIdByOrderId(Long orderId);
 

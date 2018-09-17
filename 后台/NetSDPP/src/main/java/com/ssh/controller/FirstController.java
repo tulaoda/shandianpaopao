@@ -127,6 +127,23 @@ public class FirstController {
         return map;
     }
 
+
+    @ApiImplicitParams({})
+    @RequestMapping(value = "orderAllByState", method = RequestMethod.GET)
+    @ResponseBody
+    public Map orderAllByState(String state, int page, int pageSize) {
+        Map map = new HashMap();
+        List<First> list = null;
+        try {
+            list = firstService.orderAllByState(state, page, pageSize);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        map.put("content", list);
+        map.put("msg", "执行成功！");
+        return map;
+    }
+
     //发送模板消息
     public int sendTemplateMsg(String openid, Long orderId, String courierId, String form_id) {
         //获取token
