@@ -86,7 +86,8 @@ public class FirstController {
             @RequestParam(required = true, value = "orderId") Long orderId,
             @RequestParam(required = true, value = "state") String state,
             @RequestParam(required = true, value = "openId") String openId,
-            @RequestParam(required = false, value = "courierId") String courierId
+            @RequestParam(required = false, value = "courierId") String courierId,
+            @RequestParam(required = false, value = "form_id") String form_id
     ) throws Exception {
         Map map = new HashMap();
         First first;
@@ -96,14 +97,15 @@ public class FirstController {
             first.setPayTime(CreateOrderID.getCurrentTime());
         }
         //订单状态为:已接单
-//        if (state.equals('2')) {
-        //接单时间
-        first.setCourierId(courierId);
-        first.setReceiptTime(CreateOrderID.getCurrentTime());
-        //发送模板消息
-       // sendTemplateMsg(openId, orderId, courierId);
-//        }
-        map.put("msg",sendTemplateMsg(openId, orderId, courierId));
+        if (state.equals('2')) {
+            //接单人,时间
+            first.setCourierId(courierId);
+            first.setReceiptTime(CreateOrderID.getCurrentTime());
+            //发送模板消息
+            sendTemplateMsg(openId, orderId, courierId, form_id);
+//            map.put("msg", sendTemplateMsg(openId, orderId, courierId, form_id));
+        }
+
         firstService.saveOrUpdate(first);
         map.put("msg", ResultStatus.SUCCESS.getCode());
         map.put("msg", "更新成功!");
@@ -144,17 +146,17 @@ public class FirstController {
     }
 
     //发送模板消息
-    public String sendTemplateMsg(String openid, Long orderId, String courierId) {
+    public int sendTemplateMsg(String openid, Long orderId, String courierId, String form_id) {
         //获取token
         String token = getAccessToken();
         //获取模板
-        Template template = getTemplate(openid, orderId, courierId);
+        Template template = getTemplate(openid, orderId, courierId, form_id);
         //发送请求
         String requestUrl = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=ACCESS_TOKEN";
         requestUrl = requestUrl.replace("ACCESS_TOKEN", token);
         String jsonResult = HttpRequest.sendPost(requestUrl, template.toJSON());
         JSONObject json = JSONObject.fromObject(jsonResult);
-        return (String) json.get("errcode");
+        return (int) json.getInt("errcode");
     }
 
     //获取access_token
@@ -175,12 +177,13 @@ public class FirstController {
     }
 
     //模板
-    public Template getTemplate(String openid, Long orderId, String courierId) {
+    public Template getTemplate(String openid, Long orderId, String courierId, String form_id) {
         Template tem = new Template();
         //模板ID
         tem.setTemplateId("LpLUZfwaHsh2bFTqXty0zROG-GbEndBBjTOp2zTyIAw");
         tem.setTopColor("#00DD00");
         //用户openID
+        tem.setForm_id(form_id);
         tem.setToUser(openid);
         tem.setUrl("");
         //订单信息
