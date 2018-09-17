@@ -101,8 +101,9 @@ public class FirstController {
         first.setCourierId(courierId);
         first.setReceiptTime(CreateOrderID.getCurrentTime());
         //发送模板消息
-        sendTemplateMsg(openId, orderId, courierId);
+       // sendTemplateMsg(openId, orderId, courierId);
 //        }
+        map.put("msg",sendTemplateMsg(openId, orderId, courierId));
         firstService.saveOrUpdate(first);
         map.put("msg", ResultStatus.SUCCESS.getCode());
         map.put("msg", "更新成功!");
@@ -152,11 +153,8 @@ public class FirstController {
         String requestUrl = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=ACCESS_TOKEN";
         requestUrl = requestUrl.replace("ACCESS_TOKEN", token);
         String jsonResult = HttpRequest.sendPost(requestUrl, template.toJSON());
-        if (jsonResult != null) {
-            return "发送模板消息成功";
-        } else {
-            return "发送模板消息失败";
-        }
+        JSONObject json = JSONObject.fromObject(jsonResult);
+        return (String) json.get("errcode");
     }
 
     //获取access_token
