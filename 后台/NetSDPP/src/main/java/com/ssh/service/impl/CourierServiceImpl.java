@@ -13,7 +13,11 @@ public class CourierServiceImpl implements CourierService {
     @Autowired
     private CourierDao courierDao;
 
-    public Courier findCourierById(Long id){
+    public Courier findCourierById(Long id) {
         return courierDao.findCourierById(id);
+    }
+
+    public boolean findCourierByOpenid(String openId) {
+        return courierDao.findCourierByOpenid(openId);
     }
 }
