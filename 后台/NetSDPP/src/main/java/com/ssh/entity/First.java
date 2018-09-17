@@ -24,13 +24,13 @@ public class First {
     private String createTime;
     private String payTime;
     private String receiptTime;
-    private Long courierId;
+    private String courierId;
 
     public First() {
 
     }
 
-    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, Double price, String createTime, String payTime, String receiptTime, Long courierId) {
+    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, Double price, String createTime, String payTime, String receiptTime, String courierId) {
         this.orderId = orderId;
         this.openId = openId;
         this.receiver = receiver;
@@ -169,11 +169,11 @@ public class First {
         this.receiptTime = receiptTime;
     }
 
-    public Long getCourierId() {
+    public String getCourierId() {
         return courierId;
     }
 
-    public void setCourierId(Long courierId) {
+    public void setCourierId(String courierId) {
         this.courierId = courierId;
     }
 }

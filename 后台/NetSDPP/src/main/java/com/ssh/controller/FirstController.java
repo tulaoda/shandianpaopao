@@ -1,7 +1,9 @@
 package com.ssh.controller;
 
 import com.ssh.entity.First;
+import com.ssh.entity.User;
 import com.ssh.service.FirstService;
+import com.ssh.service.UserService;
 import com.ssh.utils.CreateOrderID;
 import com.ssh.utils.HttpRequest;
 import com.ssh.utils.enums.ResultStatus;
@@ -29,6 +31,9 @@ import java.util.Map;
 public class FirstController {
     @Autowired
     private FirstService firstService;
+
+    @Autowired
+    private UserService userService;
 
     @ApiImplicitParams({})
     @RequestMapping(value = "createOrder", method = RequestMethod.POST, produces = "application/json")
@@ -80,19 +85,24 @@ public class FirstController {
     public Map updateStateByOrderId(
             @RequestParam(required = true, value = "orderId") Long orderId,
             @RequestParam(required = true, value = "state") String state,
-            @RequestParam(required = true, value = "openId") String openId
-            ) throws Exception {
+            @RequestParam(required = true, value = "openId") String openId,
+            @RequestParam(required = false, value = "courierId") String courierId
+    ) throws Exception {
         Map map = new HashMap();
         First first;
         first = firstService.findFirstByOrderId(orderId);
         first.setState(state);
-        //订单状态为:已接单
-        if (state == "2") {
-            //接单时间
-            first.setReceiptTime(CreateOrderID.getCurrentTime());
-            //发送模板消息
-            map.put("msg", sendTemplateMsg(openId, orderId));
+        if (state.equals('1')) {
+            first.setPayTime(CreateOrderID.getCurrentTime());
         }
+        //订单状态为:已接单
+//        if (state.equals('2')) {
+        //接单时间
+        first.setCourierId(courierId);
+        first.setReceiptTime(CreateOrderID.getCurrentTime());
+        //发送模板消息
+        sendTemplateMsg(openId, orderId, courierId);
+//        }
         firstService.saveOrUpdate(first);
         map.put("msg", ResultStatus.SUCCESS.getCode());
         map.put("msg", "更新成功!");
@@ -116,13 +126,13 @@ public class FirstController {
     }
 
     //发送模板消息
-    public String sendTemplateMsg(String openid, Long orderId) {
+    public String sendTemplateMsg(String openid, Long orderId, String courierId) {
         //获取token
         String token = getAccessToken();
         //获取模板
-        Template template = getTemplate(openid, orderId);
+        Template template = getTemplate(openid, orderId, courierId);
         //发送请求
-        String requestUrl = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
+        String requestUrl = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=ACCESS_TOKEN";
         requestUrl = requestUrl.replace("ACCESS_TOKEN", token);
         String jsonResult = HttpRequest.sendPost(requestUrl, template.toJSON());
         if (jsonResult != null) {
@@ -150,7 +160,7 @@ public class FirstController {
     }
 
     //模板
-    public Template getTemplate(String openid, Long orderId) {
+    public Template getTemplate(String openid, Long orderId, String courierId) {
         Template tem = new Template();
         //模板ID
         tem.setTemplateId("LpLUZfwaHsh2bFTqXty0zROG-GbEndBBjTOp2zTyIAw");
@@ -160,20 +170,18 @@ public class FirstController {
         tem.setUrl("");
         //订单信息
         String orderIdStr = orderId + "";
-        First first = null;
-        try {
-            first = firstService.findFirstByOrderId(orderId);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        First first = firstService.findFirstByOrderId(orderId);
+        User user = userService.getUserByOpenId(courierId);
+
 
         List<TemplateParam> paras = new ArrayList<TemplateParam>();
         paras.add(new TemplateParam("订单号", orderIdStr, "#FF3333"));
         paras.add(new TemplateParam("商品名称", "闪电跑跑服务", "#0044BB"));
         paras.add(new TemplateParam("订单状态", first.getState(), "#0044BB"));
-        paras.add(new TemplateParam("接单人", "", "#0044BB"));
-        paras.add(new TemplateParam("联系电话", "", "#0044BB"));
-//        paras.add(new TemplateParam("订单金额", first.getPrice(), "#0044BB"));
+        paras.add(new TemplateParam("接单人", user.getName(), "#0044BB"));
+        paras.add(new TemplateParam("联系电话", user.getTelephone(), "#0044BB"));
+        paras.add(new TemplateParam("订单金额", first.getPrice().toString(), "#0044BB"));
         paras.add(new TemplateParam("接单时间", first.getReceiptTime(), "#0044BB"));
         tem.setTemplateParamList(paras);
         return tem;

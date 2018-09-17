@@ -78,15 +78,14 @@ Page({
 
   },
   open: function(e) {
-    console.log(e.currentTarget.id)
+    console.log(e.currentTarget.dataset.openid)
     SERVER.getJSON('/first/updateOrderState', {
       orderId: e.currentTarget.id,
       state: 2,
-      openId: wx.getStorageSync('openid')
+      courierId: wx.getStorageSync('openid'),
+      openId: e.currentTarget.dataset.openid
     }, function(res) {
-      if (res.data.msg = '更新成功') {
-
-      }
+      if (res.data.msg = '更新成功') {}
       console.log(res)
     })
 

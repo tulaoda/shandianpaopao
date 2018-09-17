@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -44,7 +44,13 @@
 				{
 					"id": -1,
 					"name": "个人订单页",
-					"pathName": "pages/order1/index"
+					"pathName": "pages/order1/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "管理员",
+					"pathName": "pages/admin/admin_first"
 				}
 			]
 		}

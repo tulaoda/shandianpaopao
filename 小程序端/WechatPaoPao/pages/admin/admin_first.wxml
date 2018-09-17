@@ -85,7 +85,7 @@
 
               </view>
               <view class="weui-form-preview__ft">
-                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" id="{{item.orderId}}" bindtap='open'>接单</view>
+                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" id="{{item.orderId}}" bindtap='open' data-openId="{{item.openId}}">接单</view>
               </view>
             </view>
           </scroll-view>
