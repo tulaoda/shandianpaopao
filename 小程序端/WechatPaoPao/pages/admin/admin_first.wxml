@@ -127,6 +127,7 @@
                 </view>
               </view>
               <view class="weui-form-preview__ft">
+                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" id="{{item.orderId}}" data-contactTel='{{item.telephone}}' bindtap='contactReciver'>联系收件人</view>
                 <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" id="{{item.orderId}}" bindtap='finish'>配送完成</view>
               </view>
             </view>

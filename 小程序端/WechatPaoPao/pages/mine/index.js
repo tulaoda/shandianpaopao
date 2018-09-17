@@ -37,6 +37,13 @@ Page({
       })
     }
   },
+  developing: function() {
+    wx.showToast({
+      title: '开发中,敬请期待!',
+      icon: 'success',
+      duration: 2000
+    })
+  },
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

@@ -12,7 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(e) {
-    var that=this;
+    var that = this;
     //轮播图
     server.getJSON('/banner/listBanner', {}, function(res) {
       let imgUrls = [];
@@ -20,10 +20,17 @@ Page({
         imgUrls.push(item.imgUrl)
       });
       that.setData({
-        imgUrls:imgUrls,
+        imgUrls: imgUrls,
       })
     });
 
+  },
+  developing: function() {
+    wx.showToast({
+      title: '开发中,敬请期待!',
+      icon: 'success',
+      duration: 2000
+    })
   },
   changeIndicatorDots: function(e) {
     this.setData({

@@ -16,4 +16,6 @@ public interface FirstService extends DomainDao<First, Long> {
     First findFirstByOrderId(Long orderId);
 
     Double getPrice(Long orderId);
+
+    int sendTemplateMsg(String openId, Long orderId, String courierId, String form_id);
 }

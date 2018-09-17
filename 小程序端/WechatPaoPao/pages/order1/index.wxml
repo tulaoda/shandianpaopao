@@ -119,12 +119,16 @@
                   <view class="weui-form-preview__value">{{item.createTime}}</view>
                 </view>
                 <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">接单人：</view>
+                  <view class="weui-form-preview__value">{{item.courierName}}</view>
+                </view>
+                <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">订单编号：</view>
                   <view class="weui-form-preview__value">{{item.orderId}}</view>
                 </view>
               </view>
               <view class="weui-form-preview__ft">
-                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bindtap="open" id="12121">联系跑男</view>
+                <button class="weui__btn weui__btn_default jiedan" hover-class="weui-form-preview__btn_active" bindtap="open" id="{{item.courierTel}}">联系跑男</button>
               </view>
             </view>
 

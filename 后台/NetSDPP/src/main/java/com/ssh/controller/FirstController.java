@@ -93,6 +93,7 @@ public class FirstController {
     ) throws Exception {
         Map map = new HashMap();
         First first;
+        User user;
         first = firstService.findFirstByOrderId(orderId);
         first.setState(state);
         if (state.equals("1")) {
@@ -103,9 +104,12 @@ public class FirstController {
             //接单人,时间
             first.setCourierId(courierId);
             first.setReceiptTime(CreateOrderID.getCurrentTime());
+            user = userService.getUserByOpenId(courierId);
+            first.setCourierName(user.getName());
+            first.setCourierTel(user.getTelephone());
             //发送模板消息
             // sendTemplateMsg(openId, orderId, courierId);
-            map.put("templateMsg", sendTemplateMsg(openId, orderId, courierId, form_id));
+            map.put("templateMsg", firstService.sendTemplateMsg(openId, orderId, courierId, form_id));
         }
 
         firstService.saveOrUpdate(first);
@@ -160,66 +164,5 @@ public class FirstController {
         return map;
     }
 
-
-    //发送模板消息
-    public int sendTemplateMsg(String openid, Long orderId, String courierId, String form_id) {
-        //获取token
-        String token = getAccessToken();
-        //获取模板
-        Template template = getTemplate(openid, orderId, courierId, form_id);
-        //发送请求  https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=ACCESS_TOKEN
-        String requestUrl = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=ACCESS_TOKEN";
-        requestUrl = requestUrl.replace("ACCESS_TOKEN", token);
-        String jsonResult = HttpRequest.sendPost(requestUrl, template.toJSON());
-        JSONObject json = JSONObject.fromObject(jsonResult);
-        return (int) json.getInt("errcode");
-    }
-
-    //获取access_token
-    public String getAccessToken() {
-        //小程序唯一标识   (在微信小程序管理后台获取)
-        String wxspAppid = Constant.APP_ID;
-        //小程序的 app secret (在微信小程序管理后台获取)
-        String wxspSecret = Constant.APP_SECRET;
-        //授权（必填）
-        String grant_type = "client_credential";
-        String params = "appid=" + wxspAppid + "&secret=" + wxspSecret + "&grant_type=" + grant_type;
-        String sr = HttpRequest.sendGet("https://api.weixin.qq.com/cgi-bin/token", params);
-        //解析相应内容（转换成json对象）
-        JSONObject json = JSONObject.fromObject(sr);
-        //获取token
-        String access_token = (String) json.get("access_token");
-        return access_token;
-    }
-
-    //模板
-    public Template getTemplate(String openid, Long orderId, String courierId, String form_id) {
-        Template tem = new Template();
-        //模板ID
-        tem.setTemplateId("LpLUZfwaHsh2bFTqXty0zROG-GbEndBBjTOp2zTyIAw");
-        tem.setTopColor("#00DD00");
-        //用户openID
-        tem.setForm_id(form_id);
-        tem.setToUser(openid);
-        tem.setUrl("");
-        tem.setPage("/pages/order1/index");
-        //订单信息
-        String orderIdStr = orderId + "";
-
-        First first = firstService.findFirstByOrderId(orderId);
-        User user = userService.getUserByOpenId(courierId);
-
-
-        List<TemplateParam> paras = new ArrayList<TemplateParam>();
-        paras.add(new TemplateParam("keyword1", orderIdStr, "#FF3333"));
-        paras.add(new TemplateParam("keyword2", "闪电跑跑服务", "#0044BB"));
-        paras.add(new TemplateParam("keyword3", "已接单", "#0044BB"));
-        paras.add(new TemplateParam("keyword4", user.getName(), "#0044BB"));
-        paras.add(new TemplateParam("keyword5", user.getTelephone(), "#0044BB"));
-        paras.add(new TemplateParam("keyword6", first.getPrice().toString(), "#0044BB"));
-        paras.add(new TemplateParam("keyword7", first.getReceiptTime(), "#0044BB"));
-        tem.setData(paras);
-        return tem;
-    }
 
 }

@@ -76,6 +76,11 @@ Page({
       }
     })
   },
+  contactReciver: function(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.contacttel //仅为示例，并非真实的电话号码
+    })
+  },
   tabClick: function(e) {
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
@@ -145,16 +150,16 @@ Page({
     })
   },
   //以下为scrollview
-  lower: function(e) {
-    console.log('滚动到底部了')
-    console.log(e)
-    var zhanxun = this.data.zhanxun;
-    zhanxun.page = zhanxun.page + 1;
-    this.setData({
-      zhanxun: zhanxun,
-    })
-    this.request_discover_data()
-  },
+  // lower: function(e) {
+  //   console.log('滚动到底部了')
+  //   console.log(e)
+  //   var zhanxun = this.data.zhanxun;
+  //   zhanxun.page = zhanxun.page + 1;
+  //   this.setData({
+  //     zhanxun: zhanxun,
+  //   })
+  //   this.request_discover_data()
+  // },
   exhibition_lower: function(e) {
     if (this.data.activeIndex == 0) {
       var state_0 = this.data.state_0;
@@ -202,16 +207,16 @@ Page({
     // this.request_order_state_0_data();
   },
 
-  state_1_lower: function(e) {
-    console.log('滚动到底部了!!')
-    console.log(e)
-    var state_0 = this.data.state_0;
-    state_0.page = state_0.page + 1;
-    this.setData({
-      state_0: state_0,
-    })
-    this.request_order_state_0_data();
-  },
+  // state_1_lower: function(e) {
+  //   console.log('滚动到底部了!!')
+  //   console.log(e)
+  //   var state_0 = this.data.state_0;
+  //   state_0.page = state_0.page + 1;
+  //   this.setData({
+  //     state_0: state_0,
+  //   })
+  //   this.request_order_state_0_data();
+  // },
 
 
   request_order_state_0_data: function(type) {

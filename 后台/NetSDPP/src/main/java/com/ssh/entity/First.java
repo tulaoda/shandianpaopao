@@ -32,7 +32,7 @@ public class First {
 
     }
 
-    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, Double price, String createTime, String payTime, String receiptTime, String courierId) {
+    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, Double price, String createTime, String payTime, String receiptTime, String courierId, String courierName, String courierTel) {
         this.orderId = orderId;
         this.openId = openId;
         this.receiver = receiver;
@@ -49,6 +49,8 @@ public class First {
         this.payTime = payTime;
         this.receiptTime = receiptTime;
         this.courierId = courierId;
+        this.courierName = courierName;
+        this.courierTel = courierTel;
     }
 
     public Long getOrderId() {
