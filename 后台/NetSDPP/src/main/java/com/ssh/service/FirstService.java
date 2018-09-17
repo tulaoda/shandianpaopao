@@ -11,6 +11,7 @@ public interface FirstService extends DomainDao<First, Long> {
 
     List<First> orderByState(String openId, String state, int page, int pageSize);
 
+    List<First> orderAllByState(String state, int page, int pageSize);
 
     First findFirstByOrderId(Long orderId);
 

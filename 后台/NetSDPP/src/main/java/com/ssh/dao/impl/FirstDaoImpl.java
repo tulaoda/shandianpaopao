@@ -66,6 +66,13 @@ public class FirstDaoImpl implements FirstDao {
                 .setMaxResults(pageSize).list();
     }
 
+    public List<First> orderAllByState(String state, int page, int pageSize) {
+        String hql = "from First where state=? order by orderId desc";
+        return getCurrentSession().createQuery(hql).setString(0, state).
+                setFirstResult((page - 1) * pageSize)
+                .setMaxResults(pageSize).list();
+    }
+
     public Long findFirstIdByOrderId(Long orderId) {
         String hql = "SELECT id FROM First WHERE orderId=?";
         return (Long) getCurrentSession().createQuery(hql).setLong(0, orderId).uniqueResult();

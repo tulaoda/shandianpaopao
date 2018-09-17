@@ -33,6 +33,28 @@ Page({
   },
   onLoad: function() {
     var that = this;
+    this.setData({
+      state_0: {
+        page: 1,
+        pageSize: 5
+      },
+      state_1: {
+        page: 1,
+        pageSize: 5
+      },
+      state_2: {
+        page: 1,
+        pageSize: 5
+      },
+      state_3: {
+        page: 1,
+        pageSize: 5
+      },
+      state_0_Data: [],
+      state_1_Data: [],
+      state_2_Data: [],
+      state_3_Data: [],
+    })
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
@@ -85,7 +107,12 @@ Page({
       courierId: wx.getStorageSync('openid'),
       openId: e.currentTarget.dataset.openid
     }, function(res) {
-      if (res.data.msg = '更新成功') {}
+      if (res.data.msg = '更新成功') {
+        if (getCurrentPages().length != 0) {
+          //刷新当前页面的数据
+          getCurrentPages()[getCurrentPages().length - 1].onLoad()
+        }
+      }
       console.log(res)
     })
 
@@ -98,7 +125,10 @@ Page({
       openId: wx.getStorageSync('openid')
     }, function(res) {
       if (res.data.msg = '更新成功') {
-
+        if (getCurrentPages().length != 0) {
+          //刷新当前页面的数据
+          getCurrentPages()[getCurrentPages().length - 1].onLoad()
+        }
       }
       console.log(res)
     })
@@ -181,8 +211,7 @@ Page({
     })
     wx.showNavigationBarLoading()
     var that = this;
-    SERVER.getJSON('/first/orderByState', {
-      "openId": wx.getStorageSync("openid"),
+    SERVER.getJSON('/first/orderAllByState', {
       "state": 0,
       "page": this.data.state_0.page,
       "pageSize": this.data.state_0.pageSize
@@ -204,8 +233,7 @@ Page({
     })
     wx.showNavigationBarLoading()
     var that = this;
-    SERVER.getJSON('/first/orderByState', {
-      "openId": wx.getStorageSync("openid"),
+    SERVER.getJSON('/first/orderAllByState', {
       "state": 1,
       "page": this.data.state_1.page,
       "pageSize": this.data.state_1.pageSize
@@ -227,8 +255,7 @@ Page({
     })
     wx.showNavigationBarLoading()
     var that = this;
-    SERVER.getJSON('/first/orderByState', {
-      "openId": wx.getStorageSync("openid"),
+    SERVER.getJSON('/first/orderAllByState', {
       "state": 2,
       "page": this.data.state_2.page,
       "pageSize": this.data.state_2.pageSize
@@ -250,8 +277,7 @@ Page({
     })
     wx.showNavigationBarLoading()
     var that = this;
-    SERVER.getJSON('/first/orderByState', {
-      "openId": wx.getStorageSync("openid"),
+    SERVER.getJSON('/first/orderAllByState', {
       "state": 3,
       "page": this.data.state_3.page,
       "pageSize": this.data.state_3.pageSize
