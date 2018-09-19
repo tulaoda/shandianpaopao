@@ -39,5 +39,32 @@
 .getPower {
   height: 200rpx;
   line-height: 200rpx;
+  position: relative;
+  background: #fff;
+}
 
+.btnImg {
+  position: absolute;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200rpx;
+  line-height: 200rpx;
+  width: 200rpx;
+}
+/* 
+button::after {
+  border: none;
+} */
+
+.getText {
+  z-index: 999;
+  overflow: hidden;
+  position: relative;
+}
+
+.btnImg {
+  z-index: 900;
 }

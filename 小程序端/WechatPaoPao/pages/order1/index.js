@@ -3,6 +3,7 @@
 // var apiUtils = require('../../utils/apiUtils')
 // var types = require('../../utils/constant').MAIN_TYPE
 const SERVER = require('../../utils/server.js');
+const WxPay = require('../../utils/wxPay.js');
 var app = getApp()
 Page({
   data: {
@@ -33,11 +34,26 @@ Page({
   },
   onLoad: function() {
     this.setData({
-      state_0_Data: [],
       state_0: {
         page: 1,
         pageSize: 5
-      }
+      },
+      state_1: {
+        page: 1,
+        pageSize: 5
+      },
+      state_2: {
+        page: 1,
+        pageSize: 5
+      },
+      state_3: {
+        page: 1,
+        pageSize: 5
+      },
+      state_0_Data: [],
+      state_1_Data: [],
+      state_2_Data: [],
+      state_3_Data: [],
     })
     var that = this;
     wx.getSystemInfo({
@@ -59,7 +75,7 @@ Page({
   },
   cancelOrder: function(e) {
     console.log(e.currentTarget.id)
-    SERVER.getJSON('/first/updateStateByOrderId', {
+    SERVER.getJSON('/first/updateOrderState', {
       orderId: e.currentTarget.id,
       state: 5,
       openId: wx.getStorageSync('openid')
@@ -73,6 +89,12 @@ Page({
       console.log(res)
     })
 
+  },
+  goToPay:function(e){
+    WxPay.wxPay(
+      e.currentTarget.id
+      // res.data.fee
+    );
   },
   tabClick: function(e) {
     this.setData({

@@ -20,17 +20,19 @@ public class First {
     private String classification;
     private String receiveType;
     private String state;
-    private String price;
+    private Double price;
     private String createTime;
     private String payTime;
     private String receiptTime;
-    private Long courierId;
+    private String courierId;
+    private String courierName;
+    private String courierTel;
 
     public First() {
 
     }
 
-    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, String price, String createTime, String payTime, String receiptTime, Long courierId) {
+    public First(Long orderId, String openId, String receiver, String telephone, String address, String information, String size, String deliveryTime, String classification, String receiveType, String state, Double price, String createTime, String payTime, String receiptTime, String courierId, String courierName, String courierTel) {
         this.orderId = orderId;
         this.openId = openId;
         this.receiver = receiver;
@@ -47,8 +49,9 @@ public class First {
         this.payTime = payTime;
         this.receiptTime = receiptTime;
         this.courierId = courierId;
+        this.courierName = courierName;
+        this.courierTel = courierTel;
     }
-
 
     public Long getOrderId() {
         return orderId;
@@ -138,11 +141,11 @@ public class First {
         this.state = state;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -170,11 +173,27 @@ public class First {
         this.receiptTime = receiptTime;
     }
 
-    public Long getCourierId() {
+    public String getCourierId() {
         return courierId;
     }
 
-    public void setCourierId(Long courierId) {
+    public void setCourierId(String courierId) {
         this.courierId = courierId;
+    }
+
+    public String getCourierName() {
+        return courierName;
+    }
+
+    public void setCourierName(String courierName) {
+        this.courierName = courierName;
+    }
+
+    public String getCourierTel() {
+        return courierTel;
+    }
+
+    public void setCourierTel(String courierTel) {
+        this.courierTel = courierTel;
     }
 }

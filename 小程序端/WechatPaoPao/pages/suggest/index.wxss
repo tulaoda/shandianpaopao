@@ -5,6 +5,6 @@
 }
 
 .page__title image {
-  width: 300rpx;
-  height: 300rpx;
+  width: 250rpx;
+  height: 250rpx;
 }

@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/message/index",
+    "pages/canvas/canvas",
     "pages/mine/index",
     "pages/type1/index",
     "pages/type2/index",
@@ -34,10 +34,10 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/message/index",
+        "pagePath": "pages/canvas/canvas",
         "iconPath": "images/message_off.png",
         "selectedIconPath": "images/message_on.png",
-        "text": "消息"
+        "text": "吃什么"
       },
       {
         "pagePath": "pages/mine/index",

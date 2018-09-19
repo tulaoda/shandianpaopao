@@ -14,7 +14,7 @@
 
         <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
           <scroll-view scroll-y="true" style="height: 1080rpx;" bindscrolltolower="exhibition_lower">
-            <view class="weui-form-preview" wx:for="{{state_0_Data}}">
+            <view class="weui-form-preview" wx:for="{{state_0_Data}}" wx:key="{{index}}">
               <view class="weui-form-preview__hd">
                 <view class="weui-form-preview__label">价格：</view>
                 <view class="weui-form-preview__value_in-hd">￥{{item.price}}</view>
@@ -46,6 +46,7 @@
                 </view>
               </view>
               <view class="weui-form-preview__ft">
+                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" id="{{item.orderId}}" bindtap='goToPay'>去支付</view>
                 <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" id="{{item.orderId}}" bindtap='cancelOrder'>取消订单</view>
               </view>
             </view>
@@ -55,7 +56,7 @@
 
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
           <scroll-view scroll-y="true" style="height: 1080rpx;" bindscrolltolower="exhibition_lower">
-            <view class="weui-form-preview" wx:for="{{state_1_Data}}">
+            <view class="weui-form-preview" wx:for="{{state_1_Data}}" wx:key="{{index}}">
               <view class="weui-form-preview__hd">
                 <view class="weui-form-preview__label">价格：</view>
                 <view class="weui-form-preview__value_in-hd">￥{{item.price}}</view>
@@ -92,7 +93,7 @@
 
         <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
           <scroll-view scroll-y="true" style="height: 1080rpx;" bindscrolltolower="exhibition_lower">
-            <view class="weui-form-preview" wx:for="{{state_2_Data}}">
+            <view class="weui-form-preview" wx:for="{{state_2_Data}}" wx:key="{{index}}">
               <view class="weui-form-preview__hd">
                 <view class="weui-form-preview__label">价格：</view>
                 <view class="weui-form-preview__value_in-hd">￥{{item.price}}</view>
@@ -119,12 +120,16 @@
                   <view class="weui-form-preview__value">{{item.createTime}}</view>
                 </view>
                 <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">接单人：</view>
+                  <view class="weui-form-preview__value">{{item.courierName}}</view>
+                </view>
+                <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">订单编号：</view>
                   <view class="weui-form-preview__value">{{item.orderId}}</view>
                 </view>
               </view>
               <view class="weui-form-preview__ft">
-                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bindtap="open" id="12121">联系跑男</view>
+                <button class="weui__btn weui__btn_default jiedan" hover-class="weui-form-preview__btn_active" bindtap="open" id="{{item.courierTel}}">联系跑男</button>
               </view>
             </view>
 
@@ -133,7 +138,7 @@
 
         <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
           <scroll-view scroll-y="true" style="height: 1080rpx;" bindscrolltolower="exhibition_lower">
-            <view class="weui-form-preview" wx:for="{{state_3_Data}}">
+            <view class="weui-form-preview" wx:for="{{state_3_Data}}" wx:key="{{index}}">
               <view class="weui-form-preview__hd">
                 <view class="weui-form-preview__label">价格：</view>
                 <view class="weui-form-preview__value_in-hd">￥{{item.price}}</view>

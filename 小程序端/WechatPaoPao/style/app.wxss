@@ -1,4 +1,5 @@
 /**app.wxss**/
+
 .container {
   height: 100%;
   flex-direction: column;
@@ -7,5 +8,8 @@
   padding: 180rpx 0;
   box-sizing: border-box;
   background-color: #f3f3f3;
-  
-} 
+}
+
+.jiedan {
+  width: 100%;
+}

@@ -17,7 +17,7 @@
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
 
-    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='developing'>
       <view class="weui-cell__hd">
         <image src="../../images/grid_2.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
       </view>
@@ -26,7 +26,7 @@
     </navigator>
 
 
-    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='developing'>
       <view class="weui-cell__hd">
         <image src="../../images/grid_3.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
       </view>
@@ -35,7 +35,7 @@
     </navigator>
 
 
-    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='developing'>
       <view class="weui-cell__hd">
         <image src="../../images/grid_4.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
       </view>
@@ -44,7 +44,7 @@
     </navigator>
 
   </view>
-  <view class="weui-cells weui-cells_after-title">
+  <view class="weui-cells weui-cells_after-title" wx:if="{{judgeAdmin}}">
     <navigator url="../admin/admin_first" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="../../images/grid_1.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
@@ -64,7 +64,7 @@
     </navigator>
 
 
-    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="../../images/contact.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
       </view>
@@ -72,7 +72,7 @@
         <view bindtap="open">联系客服 </view>
       </view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </view>
+    </view> -->
     <navigator url="../suggest/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="../../images/advices.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>

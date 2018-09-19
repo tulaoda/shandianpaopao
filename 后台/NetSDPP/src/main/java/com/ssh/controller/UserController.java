@@ -3,6 +3,7 @@ package com.ssh.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ssh.entity.Banner;
 import com.ssh.entity.User;
 import com.ssh.service.UserService;
 //import com.ssh.utils.AesCbcUtil;
@@ -131,6 +132,23 @@ public class UserController {
         return map;
     }
 
+
+    @RequestMapping(value = "findUser", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, String> findUser(String openId) {
+        Map<String, String> map = new HashMap<String, String>();
+        Banner banner = new Banner();
+        User user = userService.getUserByOpenId(openId);
+        if (user == null) {
+            map.put("msg", "执行失败！");
+            return map;
+        }
+        map.put("name", user.getName());
+        map.put("tel", user.getTelephone());
+        map.put("address", user.getAddress());
+        map.put("msg", "200");
+        return map;
+    }
 
 
 }
