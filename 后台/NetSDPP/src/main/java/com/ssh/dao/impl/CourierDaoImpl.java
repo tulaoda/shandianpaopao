@@ -22,7 +22,7 @@ public class CourierDaoImpl implements CourierDao {
     }
 
     public boolean findCourierByOpenid(String openId) {
-        String hql="FROM Courier WHERE openid=?";
+        String hql="FROM Courier WHERE courierOpenId=?";
         List<Courier> couriers=getCurrentSession().createQuery(hql).setString(0,openId).list();
         if (couriers.size()>0){
             return true;

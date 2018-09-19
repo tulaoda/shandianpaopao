@@ -20,7 +20,9 @@ Page({
     }],
     index: 0,
   },
+
   onLoad: function() {
+    this.getUser();
     this.initValidate();
     if (app.globalData.userInfo) {
       this.setData({
@@ -48,6 +50,21 @@ Page({
         }
       })
     }
+  },
+  //获取用户信息
+  getUser: function() {
+    var that = this;
+    SERVER.getJSON('/user/findUser', {
+      openId: wx.getStorageSync('openid')
+    }, function(res) {
+      that.setData({
+        phone: res.data.tel,
+        address: res.data.address,
+        username: res.data.name
+      })
+    });
+    // console.log(username + address + phone + school + openid)
+
   },
   bindPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', this.data.array[e.detail.value])
@@ -136,10 +153,15 @@ Page({
       openid: openid,
     }, function(res) {
       if (res.data.user != '') {
+        wx.navigateTo({
+          url: '../mine/index'
+        });
         wx.showModal({
-          content: '提交成功',
-          showCancel: false,
-        })
+            content: '提交成功',
+            showCancel: false,
+          }
+        )
+       
 
       }
       // console.log(res.data)

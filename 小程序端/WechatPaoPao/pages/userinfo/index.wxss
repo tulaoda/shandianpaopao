@@ -54,16 +54,15 @@
   line-height: 200rpx;
   width: 200rpx;
 }
-
+/* 
 button::after {
   border: none;
-}
+} */
 
 .getText {
   z-index: 999;
   overflow: hidden;
   position: relative;
-  width: 140rpx;
 }
 
 .btnImg {

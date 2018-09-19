@@ -8,6 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    username: '',
+    address: '',
+    phone: '',
     arrayPostSize: ['请选择', '小件', '中件', '大件', '超大件'],
     indexPostSize: 0,
     arrayPostTime: ['请选择', '中午12:30', '晚上8:30'],
@@ -16,7 +19,8 @@ Page({
     indexPostClassify: 0,
     arrayPostType: ['请选择', '本人签收', '同学代签'],
     indexPostType: 0,
-    price: [0.01, 4, 5, 10]
+    // price: [0.01, 4, 5, 10]
+    price: ''
   },
   //选择快递大小
   bindPickerChangePostSize: function(e) {
@@ -148,11 +152,39 @@ Page({
       return this.WxValidate.optional(value) || (value.length >= 1 && value.length <= 2)
     }, '请勾选1-2个敲码助手')
   },
+
+
+  //获取用户信息
+  getUser: function() {
+    var that = this;
+    SERVER.getJSON('/user/findUser', {
+      openId: wx.getStorageSync('openid')
+    }, function(res) {
+      that.setData({
+        phone: res.data.tel,
+        address: res.data.address,
+        username: res.data.name
+      })
+    });
+    // console.log(username + address + phone + school + openid)
+
+  },
+  //查询价格
+  findAllPrice: function() {
+    var that = this;
+    SERVER.getJSON('/price/findAllPrice', {}, function(res) {
+      that.setData({
+        price: res.data.content
+      })
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.initValidate()
+    this.findAllPrice();
+    this.initValidate();
+    this.getUser();
     console.log(this.WxValidate)
   },
 

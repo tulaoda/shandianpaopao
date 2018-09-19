@@ -1,4 +1,4 @@
-const server = require('../../utils/server');
+const SERVER = require('../../utils/server.js');
 Page({
   data: {
     imgUrls: [],
@@ -14,7 +14,7 @@ Page({
   onLoad: function(e) {
     var that = this;
     //轮播图
-    server.getJSON('/banner/listBanner', {}, function(res) {
+    SERVER.getJSON('/banner/listBanner', {}, function(res) {
       let imgUrls = [];
       res.data.content.map(item => {
         imgUrls.push(item.imgUrl)
@@ -25,10 +25,11 @@ Page({
     });
 
   },
+
   developing: function() {
     wx.showToast({
       title: '开发中,敬请期待!',
-      icon: 'success',
+      icon:'none',
       duration: 2000
     })
   },

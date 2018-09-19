@@ -3,6 +3,7 @@
 // var apiUtils = require('../../utils/apiUtils')
 // var types = require('../../utils/constant').MAIN_TYPE
 const SERVER = require('../../utils/server.js');
+const WxPay = require('../../utils/wxPay.js');
 var app = getApp()
 Page({
   data: {
@@ -88,6 +89,12 @@ Page({
       console.log(res)
     })
 
+  },
+  goToPay:function(e){
+    WxPay.wxPay(
+      e.currentTarget.id
+      // res.data.fee
+    );
   },
   tabClick: function(e) {
     this.setData({

@@ -1,15 +1,19 @@
 //index.js
 //获取应用实例
+const WxPay = require('../../utils/wxPay.js');
 const app = getApp()
+const SERVER = require('../../utils/server.js');
 
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    judgeAdmin: false
   },
   onLoad: function() {
+    this.judgeAdmin();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -40,8 +44,22 @@ Page({
   developing: function() {
     wx.showToast({
       title: '开发中,敬请期待!',
-      icon: 'success',
+      icon: 'none',
       duration: 2000
+    })
+  },
+  //判断是否为管理员
+  judgeAdmin: function() {
+    var that = this;
+    //轮播图
+    SERVER.getJSON('/courier/judgeAdmin', {
+      openId: wx.getStorageSync('openid')
+    }, function(res) {
+      if (res.data.code == 200) {
+        that.setData({
+          judgeAdmin: true
+        })
+      }
     })
   },
   getUserInfo: function(e) {

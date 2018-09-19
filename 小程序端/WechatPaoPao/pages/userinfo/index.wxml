@@ -1,56 +1,56 @@
 <view class="container">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='getPower'>
-      <view class='getText'>授       权</view>
-      <image class='btnImg' src='../../images/power.png'></image>
+      <view class='getText'>点击授权</view>
+      <!-- <image class='btnImg' src='../../images/power.png'></image> -->
     </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
-    </view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
-        <view class="weui-cell__hd">
-          <image src="../../images/school.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-        </view>
-        <view class="weui-cell__bd first_bd">学校</view>
-        <view class="weui-cell__bd">
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-
-            {{array[index]}}
-          </picker>
-
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">
-          <image src="../../images/username.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-        </view>
-        <view class="weui-cell__bd first_bd">姓名</view>
-        <view class="weui-cell__bd">
-          <input bindinput="onInputUsername" class="weui-input" placeholder="收件人姓名" />
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">
-          <image src="../../images/address.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-        </view>
-        <view class="weui-cell__bd first_bd">地址</view>
-        <view class="weui-cell__bd">
-          <input bindinput="onInputAddress" class="weui-input" placeholder="收件人地址" />
-        </view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">
-          <image src="../../images/phoneNumber.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-        </view>
-        <view class="weui-cell__bd first_bd">手机号</view>
-        <view class="weui-cell__bd">
-          <input bindinput="onInputPhone" class="weui-input" placeholder="收件人手机号" type="tel" />
-        </view>
-      </view>
-    </view>
-    <button bindtap="saveUserInfo" class="weui-btn type1-btn" type="primary">保存</button>
-
   </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <image src="../../images/school.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd first_bd">学校</view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+
+          {{array[index]}}
+        </picker>
+
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <image src="../../images/username.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd first_bd">姓名</view>
+      <view class="weui-cell__bd">
+        <input bindinput="onInputUsername" class="weui-input" placeholder="收件人姓名" value='{{username}}' />
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <image src="../../images/address.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd first_bd">地址</view>
+      <view class="weui-cell__bd">
+        <input bindinput="onInputAddress" class="weui-input" placeholder="收件人地址" value='{{address}}' />
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <image src="../../images/phoneNumber.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd first_bd">手机号</view>
+      <view class="weui-cell__bd">
+        <input bindinput="onInputPhone" class="weui-input" placeholder="收件人手机号" type="tel" value='{{phone}}' />
+      </view>
+    </view>
+  </view>
+  <button bindtap="saveUserInfo" class="weui-btn type1-btn" type="primary">保存</button>
+
+</view>
