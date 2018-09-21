@@ -15,7 +15,7 @@
         <image src="../../images/school.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
       </view>
       <view class="weui-cell__bd first_bd">学校</view>
-      <view class="weui-cell__bd">
+      <view class="weui-cell__bd school">
         <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
 
           {{array[index]}}

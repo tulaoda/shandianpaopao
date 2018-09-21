@@ -13,7 +13,8 @@
     "pages/order4/index",
     "pages/userinfo/index",
     "pages/suggest/index",
-    "pages/admin/admin_first"
+    "pages/admin/admin_first",
+    "pages/banner_detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
