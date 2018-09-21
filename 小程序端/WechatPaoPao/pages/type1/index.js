@@ -61,7 +61,7 @@ Page({
       "openId": wx.getStorageSync('openid'),
       "formId": this.data.formId
     }, function(res) {
-     
+     console.log('formId发送')
     });
     console.log(params)
 
