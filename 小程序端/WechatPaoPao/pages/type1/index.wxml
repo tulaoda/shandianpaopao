@@ -1,4 +1,4 @@
-<form bindsubmit="formSubmit" bindreset="formReset">
+<form bindsubmit="formSubmit" bindreset="formReset" report-submit='true'>
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">

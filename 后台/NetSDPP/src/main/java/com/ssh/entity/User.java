@@ -20,17 +20,19 @@ public class User {
     private String address;
     @Column(name = "telephone")
     private String telephone;
+    private String formId;
 
     public User() {
 
     }
 
-    public User(String openid, String name, String school, String address, String telephone) {
+    public User(String openid, String name, String school, String address, String telephone, String formId) {
         this.openid = openid;
         this.name = name;
         this.school = school;
         this.address = address;
         this.telephone = telephone;
+        this.formId = formId;
     }
 
     public Long getId() {
@@ -79,5 +81,13 @@ public class User {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getFormId() {
+        return formId;
+    }
+
+    public void setFormId(String formId) {
+        this.formId = formId;
     }
 }

@@ -9,7 +9,7 @@
 
 .school {
   position: relative;
-  left: -10rpx;
+  left: -15rpx;
 }
 
 .userinfo-avatar {

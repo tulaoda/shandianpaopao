@@ -133,6 +133,21 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "updateFormId", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, String> findUser(String openId, String formId) {
+        Map<String, String> map = new HashMap<String, String>();
+        User user = userService.getUserByOpenId(openId);
+        user.setFormId(formId);
+        userService.saveOrUpdate(user);
+        if (user == null) {
+            map.put("msg", "执行失败！");
+            return map;
+        }
+        map.put("msg", "200");
+        return map;
+    }
+
     @RequestMapping(value = "findUser", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, String> findUser(String openId) {

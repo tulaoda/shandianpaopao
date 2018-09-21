@@ -124,6 +124,7 @@ public class FirstServiceImpl implements FirstService {
         tem.setTemplateId("LpLUZfwaHsh2bFTqXty0zROG-GbEndBBjTOp2zTyIAw");
         tem.setTopColor("#00DD00");
         //用户openID
+        form_id = userDao.getUserByOpenId(openid).getFormId();
         tem.setForm_id(form_id);
         tem.setToUser(openid);
         tem.setUrl("");

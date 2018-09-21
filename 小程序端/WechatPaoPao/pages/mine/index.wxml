@@ -16,7 +16,7 @@
       <view class="weui-cell__bd">代取订单</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-
+<!-- 
     <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='developing'>
       <view class="weui-cell__hd">
         <image src="../../images/grid_2.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
@@ -41,7 +41,7 @@
       </view>
       <view class="weui-cell__bd">其他订单</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
+    </navigator> -->
 
   </view>
   <view class="weui-cells weui-cells_after-title" wx:if="{{judgeAdmin}}">

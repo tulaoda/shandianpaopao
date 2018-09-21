@@ -11,6 +11,7 @@ Page({
     username: '',
     address: '',
     phone: '',
+    formId: '',
     arrayPostSize: ['请选择', '小件', '中件', '大件', '超大件'],
     indexPostSize: 0,
     arrayPostTime: ['请选择', '晚上8:30'],
@@ -51,7 +52,17 @@ Page({
   },
   formSubmit: function(e) {
     const params = e.detail.value
+    console.log(e.detail.formId);
+    this.setData({
+      formId: e.detail.formId
+    })
 
+    SERVER.getJSON('/user/updateFormId', {
+      "openId": wx.getStorageSync('openid'),
+      "formId": this.data.formId
+    }, function(res) {
+     
+    });
     console.log(params)
 
     // 传入表单数据，调用验证方法
