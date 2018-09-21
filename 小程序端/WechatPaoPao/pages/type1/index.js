@@ -13,7 +13,7 @@ Page({
     phone: '',
     arrayPostSize: ['请选择', '小件', '中件', '大件', '超大件'],
     indexPostSize: 0,
-    arrayPostTime: ['请选择', '中午12:30', '晚上8:30'],
+    arrayPostTime: ['请选择', '晚上8:30'],
     indexPostTime: 0,
     arrayPostClassify: ['请选择', '包裹', '箱子', '文件'],
     indexPostClassify: 0,

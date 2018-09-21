@@ -165,9 +165,9 @@ public class FirstController {
         paras.add(new TemplateParam("订单状态", first.getState(), "#0044BB"));
         paras.add(new TemplateParam("接单人", "", "#0044BB"));
         paras.add(new TemplateParam("联系电话", "", "#0044BB"));
-        paras.add(new TemplateParam("订单金额", first.getPrice(), "#0044BB"));
+        paras.add(new TemplateParam("订单金额", first.getPrice().toString(), "#0044BB"));
         paras.add(new TemplateParam("接单时间", first.getReceiptTime(), "#0044BB"));
-        tem.setTemplateParamList(paras);
+        tem.setData(paras);
         return tem;
     }
 

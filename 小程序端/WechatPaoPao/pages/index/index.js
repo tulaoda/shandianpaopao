@@ -25,11 +25,15 @@ Page({
     });
 
   },
-
+  banner_detail: function() {
+    wx.navigateTo({
+      url: '../banner_detail/index',
+    });
+  },
   developing: function() {
     wx.showToast({
       title: '开发中,敬请期待!',
-      icon:'none',
+      icon: 'none',
       duration: 2000
     })
   },

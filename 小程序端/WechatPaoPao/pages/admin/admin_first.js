@@ -82,7 +82,8 @@ Page({
     SERVER.postJSON('/first/updateOrderState', {
       orderId: e.currentTarget.id,
       state: 2,
-      openId: wx.getStorageSync('openid')
+      openId: wx.getStorageSync('openid'),
+      form_id: e.detail.formId
     }, function(res) {
       if (res.data.msg = '更新成功') {
 
@@ -96,7 +97,8 @@ Page({
     SERVER.postJSON('/first/updateOrderState', {
       orderId: e.currentTarget.id,
       state: 3,
-      openId: wx.getStorageSync('openid')
+      openId: wx.getStorageSync('openid'),
+      form_id: e.detail.formId
     }, function(res) {
       if (res.data.msg = '更新成功') {
 

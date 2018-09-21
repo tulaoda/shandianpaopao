@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -50,7 +50,13 @@
 				{
 					"id": -1,
 					"name": "管理员",
-					"pathName": "pages/admin/admin_first"
+					"pathName": "pages/admin/admin_first",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "aa",
+					"pathName": "pages/banner_detail/index"
 				}
 			]
 		}

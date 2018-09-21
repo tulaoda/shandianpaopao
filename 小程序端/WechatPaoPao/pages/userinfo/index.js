@@ -153,17 +153,20 @@ Page({
       openid: openid,
     }, function(res) {
       if (res.data.user != '') {
-        wx.navigateTo({
-          url: '../mine/index'
-        });
-        wx.showModal({
-            content: '提交成功',
-            showCancel: false,
-          }
-        )
-       
+
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          showCancel: false,
+        })
+        setTimeout(function() {
+          wx.switchTab({
+            url: '../mine/index',
+          });
+        }, 1000)
 
       }
+
       // console.log(res.data)
       // let imgUrls = [];
       // res.data.content.map(item => {

@@ -7,6 +7,11 @@
   line-height: 100rpx;
 }
 
+.school {
+  position: relative;
+  left: -15rpx;
+}
+
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
@@ -54,6 +59,7 @@
   line-height: 200rpx;
   width: 200rpx;
 }
+
 /* 
 button::after {
   border: none;
