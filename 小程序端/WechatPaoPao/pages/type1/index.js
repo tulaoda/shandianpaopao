@@ -61,7 +61,7 @@ Page({
       "openId": wx.getStorageSync('openid'),
       "formId": this.data.formId
     }, function(res) {
-     console.log('formId发送')
+      console.log('formId发送')
     });
     console.log(params)
 
@@ -96,6 +96,13 @@ Page({
       telephone,
       price
     } = e.detail.value;
+    wx.showLoading({
+      title: 'loading',
+    })
+
+    setTimeout(function() {
+      wx.hideLoading()
+    }, 1000)
     SERVER.postJSON('/first/createOrder', {
       "address": address,
       "classification": classification,
@@ -198,7 +205,9 @@ Page({
     this.getUser();
     console.log(this.WxValidate)
   },
-
+  formReset: function() {
+    console.log('form发生了reset事件')
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -217,7 +226,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
+    this.formReset()
   },
 
   /**
