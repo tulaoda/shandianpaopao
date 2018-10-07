@@ -1,1 +1,6 @@
 /* pages/banner_detail/index.wxss */
+
+image {
+  width: 100%;
+  height: 1200rpx;
+}
