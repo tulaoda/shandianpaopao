@@ -1,6 +1,16 @@
-/* pages/banner_detail/index.wxss */
+/* pages/suggest/index.wxss */
 
-image {
-  width: 100%;
-  height: 1200rpx;
+.container {
+  text-align: center;
+}
+.page__desc{
+  margin-bottom: 20rpx;
+  font-size: 40rpx;
+}
+.weui-article__p{
+  line-height: 40rpx;
+  margin: 0 30rpx;
+  text-align: left;
+  font-size: 30rpx;
+  margin-bottom: 15rpx;
 }

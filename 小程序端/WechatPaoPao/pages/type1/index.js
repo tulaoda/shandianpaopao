@@ -12,7 +12,7 @@ Page({
     address: '',
     phone: '',
     formId: '',
-    arrayPostSize: ['请选择', '小件', '中件', '大件', '超大件'],
+    arrayPostSize: ['请选择', '小件(1kg)', '中件(1-3kg)', '大件(3-7kg)', '超大件(7kg以上)'],  
     indexPostSize: 0,
     arrayPostTime: ['请选择', '晚上8:30'],
     indexPostTime: 0,

@@ -33,7 +33,18 @@
           <view class="weui-grid__label">万能帮</view>
         </navigator>
       </block>
-
+      <block>
+        <navigator url="../type3/index" class="weui-grid" hover-class="weui-grid_active">
+          <image class="weui-grid__icon" src="../../images/grid_5.png" />
+          <view class="weui-grid__label">招贤纳士</view>
+        </navigator>
+      </block>
+      <block>
+        <navigator url="../type4/index" class="weui-grid" hover-class="weui-grid_active">
+          <image class="weui-grid__icon" src="../../images/grid_6.png" />
+          <view class="weui-grid__label">百度公开课</view>
+        </navigator>
+      </block>
     </view>
 
 

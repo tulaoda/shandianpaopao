@@ -16,7 +16,7 @@
 
 .swiper-container {
   box-shadow: 0px 5rpx 10px #888;
-  height: 450rpx;
+  height: 400rpx;
   margin-bottom: 20rpx;
 }
 
@@ -25,8 +25,7 @@
 }
 
 .footer {
-  margin-top: 30rpx;
-  height: 210rpx;
+  height: 150rpx;
 }
 
 .content {
@@ -34,10 +33,11 @@
 }
 
 .weui-grid {
-  border-left:1rpx solid #D9D9D9;
-
+  border-left: 1rpx solid #d9d9d9;
+  height: 180rpx;
   width: 50%;
 }
-.weui-grids{
+
+.weui-grids {
   border-radius: 30rpx;
 }
