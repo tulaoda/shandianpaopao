@@ -1,2 +1,43 @@
-<!--pages/banner_detail.wxml-->
-<image src='../../images/banner_detail.jpg'></image>
+<view class="container">
+  <view class="page__bd">
+    <view class="weui-article__p">
+      1.请首次使用的小哥哥小姐姐们完善好个人信息。
+    </view>
+    <view class="weui-article__p">
+      2.请小哥哥小姐姐们于五点半前完成下单。
+    </view>
+    <view class="weui-article__p">
+      3.为了您的隐私，我们是专人负责取件配送。
+    </view>
+    <view class="weui-article__p">
+      4.如果未按下单说明下单，小哥哥小姐姐注意了，我们会在签收时补差价。
+    </view>
+    <view class="weui-article__p">
+      5.下单成功后，北苑男生宿舍楼的快递会尽可能的派送到宿舍，由于取件的基本上是小哥哥，所以对于女生宿舍可能就不能送到宿舍里。
+    </view>
+    <view class="weui-article__p">
+      6.配送途中会完全保证小哥哥小姐姐们的物件不受损，但是如果是贵重物品的话不建议使用代取服务哦。
+    </view>
+    <view class="weui-article__p">
+      7.程序的运营模式为在取件员取件完成时接单，对于未找到的快递是不会接单的，请小哥哥小姐姐们专一一点，不要使用多家代取服务哦。
+    </view>
+    <view class="weui-article__p">
+      8.对于已接单的快递在运输途中丢失，小哥哥小姐姐们不要担心，我们会负全部责任；但是对于判定为恶意捣乱行为时，我方不会进行赔偿哦。
+    </view>
+    <view class="weui-article__p">
+      9.由于公司刚刚起步，为了配送人员有更好的精力，能够更好的服务大家，所以我们暂时不支持中午配送，但是快递会在晚上七点左右准时送到。
+    </view>
+    <view class="weui-article__p">
+      10.我们会有不定期的免费的服务活动，希望大家都能成为幸运儿。
+    </view>
+    <view class="weui-article__p">
+      11.现在我们主要的服务是带取快递，而且正在进行活动哦，那就是“一分钱取物”意思就是现在代取快递只要一分钱。活动过后的价钱会在公告中通知的。
+    </view>
+    <view class="weui-article__p">
+      12.后期我们即将上线一些新的服务，请小哥哥小姐姐们多多关注，这些即将上线的活动是配送到寝的超市，配送外卖，以及大家感兴趣的百度公开课，敬请期待吧！
+    </view>
+    <view class="weui-article__p">
+      13.当发现程序有问题时可及时扫描程序主页上的二维码反馈给工作人大家对我们的程序有什么建议时希望大家积极的提出来，帮助我们改进。
+    </view>
+  </view>
+</view>
