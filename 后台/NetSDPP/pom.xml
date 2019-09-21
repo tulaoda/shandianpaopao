@@ -37,7 +37,7 @@
     <!--</build>-->
 
     <properties>
-        <springVersion>4.3.1.RELEASE</springVersion>
+        <springVersion>5.1.9.RELEASE</springVersion>
         <hibernateVersion>4.3.5.Final</hibernateVersion>
         <jstlVersion>1.2</jstlVersion>
         <taglibVersion>1.1.2</taglibVersion>
