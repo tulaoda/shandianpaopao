@@ -1,10 +1,12 @@
-# ShanDianPaoPao
+# 闪电跑跑
 
 ## 项目介绍
 
-校园代取代取代寄及其他校园跑腿服务。
+大学期间创业项目，校园生活服务类小程序。
 
-后端采用Spring4+Hibernate4+SpringMVC+MYSQL
+主要功能为校园快递代取代寄、其他校园跑腿服务暂未开发。
 
-前端小程序
+后端采用 Spring4 + Hibernate4 + SpringMVC + MYSQL
+
+前端小程序原生开发
 
