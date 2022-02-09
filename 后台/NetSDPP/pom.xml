@@ -38,7 +38,7 @@
 
     <properties>
         <springVersion>4.3.1.RELEASE</springVersion>
-        <hibernateVersion>4.3.5.Final</hibernateVersion>
+        <hibernateVersion>5.4.24.Final</hibernateVersion>
         <jstlVersion>1.2</jstlVersion>
         <taglibVersion>1.1.2</taglibVersion>
         <servletVersion>3.0-alpha-1</servletVersion>
